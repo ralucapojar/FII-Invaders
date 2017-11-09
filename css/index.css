@@ -1,0 +1,51 @@
+
+input[type=text] {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-top: 40px;
+}
+
+
+.modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-image: url("../img/background.jpg");
+    
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.box{
+    margin: auto;
+    width: 500px;
+    height: 300px;
+    background: midnightblue;
+    margin-top: 100px;
+}
+
+.container{
+    font-size: x-large;
+    text-align: -webkit-center;
+}
+
+.special-design{
+    margin-top: 40px;
+}
+p{
+     margin-top: 40px;
+}
