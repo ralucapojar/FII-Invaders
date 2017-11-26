@@ -18,7 +18,9 @@ input[type=text] {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-image: url("../img/background.jpg");
+    background-image: url("../img/prima_p.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     
 }
 
