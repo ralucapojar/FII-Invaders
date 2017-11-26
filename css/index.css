@@ -21,6 +21,7 @@
     position: absolute;
     top: 30%;
     left: 10%;
+    opacity: 0.7;
 }
 
 .box:hover{
