@@ -41,5 +41,44 @@ function checkStorage() {
  	   return 1;
 	}
 	return 0;
-
 };
+
+
+document.addEventListener("keydown", keyDownTextField, false);
+
+
+
+function moveRight(){
+	document.getElementById("moveStud").direction = "right";
+}
+
+function moveUp(){
+	document.getElementById("moveStud").direction = "up"; 
+}
+function moveDown(){
+	document.getElementById("moveStud").direction = "down"; 
+}
+function moveLeft(){
+	document.getElementById("moveStud").direction = "left";
+}
+
+
+
+function keyDownTextField(e) {
+	var keyCode = e.keyCode;
+	if (keyCode == 37) {
+		console.log('left');
+	} 
+	if (keyCode == 38) {
+		console.log('up');
+	} 
+	if (keyCode == 39) {
+		console.log('rigth');
+		moveRight();
+	} 
+	if (keyCode == 40) {
+		console.log('down');
+		moveDown();
+	} 
+  
+}
