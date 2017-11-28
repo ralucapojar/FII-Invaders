@@ -24,11 +24,12 @@ body {
   height: 800px;
   
   background-image: url(../img/nivel_2.jpg);
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../img/nivel_2.jpg);
   background-repeat: no-repeat;
-  background-size: 80% 60%;
+  background-size: 80% 80%;
   background-attachment: fixed;
   background-position-x: center;
-  background-position-y: center;
+  background-position-y: bottom;
 }
 
 .game{
@@ -85,4 +86,26 @@ body {
   .box-game {
     left:10%;
   }
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px){
+  .box-game {
+    left: 11%;
+    width: 82%;
+    height: 81%;
+    top: 20%;
+    background-size: 80% 85%;
+  }
+
+}
+
+@media only screen and (min-device-height: 320px) and (max-device-height : 480px){
+  .box-game {
+    left: 11%;
+    width: 82%;
+    height: 81%;
+    top: 20%;
+    background-size: 80% 85%;
+  }
+
 }
