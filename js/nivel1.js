@@ -12,17 +12,23 @@ if( result == 0){
 	userData['userScore' ] = score;
 	save(userData);
 
-	var h2 = document.createElement("h3");
-	var h3 = document.createElement("h3");
+	var h2Score = document.createElement("p");
+	var h3 = document.createElement("p");
+	var h3Life = document.createElement("p");
 	var p=document.createElement("p");
-	h2.id='info;'
+	h2Score.id='info;'
 	h3.id='info';
+	h3Life.id='info';
 
+	h3Life.innerHTML="Life: 3*";
 	h3.innerHTML="User: " + name;
-	h2.innerHTML="Score: " + score;
+	h2Score.innerHTML="Score: " + score;
 
+
+
+document.getElementById("info").appendChild(h3Life);
 document.getElementById("info").appendChild(h3);
-document.getElementById("info").appendChild(h2);
+
 }
 
 window.onbeforeunload = function(e) {
