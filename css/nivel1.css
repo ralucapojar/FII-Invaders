@@ -82,3 +82,15 @@ body {
   	left:10%;
   }
 }
+
+#canvas{
+  border-style: ridge;
+  border-color:red;
+  position: absolute;
+  top: 22%;
+  left: 23%;
+  width: 1000px;
+  height: 600px;
+  background-color: black;
+
+}
