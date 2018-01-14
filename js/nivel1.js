@@ -1,3 +1,4 @@
+   
     var canvas;
     var context;
     var imageCache = {};

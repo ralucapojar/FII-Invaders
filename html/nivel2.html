@@ -1,53 +1,71 @@
 <!doctype html>
 <html>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" type="text/css" href="../css/nivel2.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <body>
+
 	<div id="info">
+		<button class="w3-button w3-teal w3-xlarge w3-left meniu"  onclick="openLeftMenu()">&#9776;</button>
 		<h1>Anul 2</h1>
 	</div>
-	<div class="box-game">
-			<div class="game">
-				<div id="monstri" class="monster">
-					<marquee behavior="alternate" direction="left" scrollamount=20>
-					<div class="monster-row">
-						<img src="../img/monster2_nivel2.png" height="60" width="60">
-						<img src="../img/monster2_nivel2.png" height="60" width="60">
-						<img src="../img/monster2_nivel2.png" height="60" width="60">
-						<img src="../img/monster2_nivel2.png" height="60" width="60">
-						<img src="../img/monster2_nivel2.png" height="60" width="60">
-					</div>
-					<div class="monster-row">
-						<img src="../img/monster2_nivel2.png" height="60" width="60">
-						<img src="../img/monster2_nivel2.png" height="60" width="60">
-						<img src="../img/monster2_nivel2.png" height="60" width="60">
-						<img src="../img/monster2_nivel2.png" height="60" width="60">
-						<img src="../img/monster2_nivel2.png" height="60" width="60">
-					</div>
-					<div class="monster-row">
-						<img src="../img/monster1_nivel2.png" height="60" width="60">
-						<img src="../img/monster1_nivel2.png" height="60" width="60">
-						<img src="../img/monster1_nivel2.png" height="60" width="60">
-						<img src="../img/monster1_nivel2.png" height="60" width="60">
-						<img src="../img/monster1_nivel2.png" height="60" width="60">
-					</div>
-					</marquee>
-				</div>
-				<div class="bullets">
-					<div class="bullet-row">
-						<img src="../img/bomba_nivel2.png" height="25" width="25">
-					</div>
-				</div>
-				<div class="student">
-					<div class="student-row">
-						<marquee id="moveStud" behavior="slide" direction="left" scrollamount=20>
-							<img src="../img/student_nivel2.png" height="90" width="70">
-						</marquee>
-					</div>
-				</div>
-				
-			</div>
+
+	<div class="w3-sidebar w3-bar-block w3-card w3-animate-left side" style="display:none" id="leftMenu">
+
+		<button onclick="closeLeftMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
+
+		<button id="descriptionBtn" class="w3-bar-item w3-button">Description</button>
+
+		<button id="controlsBtn" class="w3-bar-item w3-button">Controls</button>
+
+		<button id="rulesBtn" class="w3-bar-item w3-button">Rules</button>
 		
+		<button id="highScoresBtn" class="w3-bar-item w3-button">HighScores</button>
+
 	</div>
+
+	<div id="Modal_des" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p> FII Invaders este o dezvoltarea la nivel de browser Web a jocului clasic Space Invaders plasat insa in contextul Facultatii de Informatica.</p>
+
+			<p> Space Invaders este un joc video creat de Tomohiro Nishikado și lansat in 1978 . Acesta a fost initial fabricat si vandut de Taito in Japonia si a fost ulterior licentiat pentru productie in Statele Unite de catre divizia Midway din Bally . Space Invaders este unul dintre primele jocuri de fotografiere si scopul este de a invinge valuri de straini cu un tun cu laser pentru a castiga.</p>
+		</div>
+	</div>
+
+	<div id="Modal_cont" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p>Controls:</p>
+			<p> ◄ &nbsp;&nbsp;&nbsp;&nbsp;- move left
+	            <br><br>
+	            ► &nbsp;&nbsp;&nbsp;&nbsp;- move right
+	            <br><br>
+	            SPACE - fire
+		</div>
+	</div>
+
+	<div id="Modal_rul" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p>Rules :</p>
+			<p>- Stay alive by avoiding enemy projectiles
+             <br><br>
+             - Kill all enemies </p>
+		</div>
+	</div>
+
+	<div id="Modal_scor" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p>Some..</p>
+		</div>
+	</div>
+
+
+
+	<canvas id="canvas" width="1024" height="768" tabindex='1'></canvas>
 </body>
 <script type="text/javascript" src="../js/nivel1.js"></script>
 
