@@ -9,87 +9,7 @@
         invader3: 3
     };
     var invaders = [];
-<<<<<<< HEAD
-    var bullets = [];
-    var keyMap = {};
-    var bases = [];
-    var invaderMoveDirection = invaderDirection.right;
-    var invaderSpeed = INVADER_START_SPEED;
-    var invaderBulletFrequency = INVADER_START_BULLET_FREQUENCY;
-    loadImage('ship', '../img/student1.png');
-    loadImage('invader1', '../img/monster1.png');
-    
-    loadImage('invader2', '../img/monster1.png');
-    
-    loadImage('invader3', '../img/monster1.png');
-    
-    loadImage('bullet', '../img/bomba1.png');
-    loadImage('base', '../img/licenta.png');
-    window.onload = function() {
-        canvas = document.getElementById('canvas');
-        context = canvas.getContext('2d');
-        
-       
-        setupInvaders();
 
-        canvas.addEventListener('keydown', function(e) {
-            handleKeypress(e);
-        });
-        canvas.addEventListener('keyup', function(e) {
-            handleKeypress(e);
-        });
-        setInterval(redraw, 1000/30);
-    };
-    function setupInvaders() {
-        var startY = 50;
-        for (var rows = 0; rows < 4; rows++) {
-            var startX = 50;
-            var typeOfInvader = invaderType.invader1;
-            if (rows === 1 || rows === 2) {
-                typeOfInvader = invaderType.invader2;
-            }
-            if (rows > 2) {
-                typeOfInvader = invaderType.invader3;
-            }
-            for (var col = 0; col < 5; col++) {
-                var newInvader = new invader(typeOfInvader, startX, startY);
-                invaders.push(newInvader);
-                // startX += newInvader.width + INVADER_HORIZ_GAP;
-                startX += INVADER_MAX_WIDTH + INVADER_HORIZ_GAP;
-            };
-            // startY += newInvader.height + INVADER_VERT_GAP;
-            startY += INVADER_MAX_HEIGHT + INVADER_VERT_GAP;
-        }
-    };
-   
-    function drawInvaders() {
-        if (invaders.length > 0) {
-            invaders.forEach(function(invaderIcon) {
-                invaderIcon.direction = invaderMoveDirection;
-                invaderIcon.draw();
-                invaderIcon.move()
-            });
-        }
-    };
-    function invaderChangeDirection() {
-        if (invaderMoveDirection === invaderDirection.right) {
-            invaderMoveDirection = invaderDirection.left;
-        } else {
-            invaderMoveDirection = invaderDirection.right;
-        }
-    };
-    
-    function redraw() {
-        context.fillStyle = 'black';
-        context.fillRect(0, 0, canvas.width, canvas.height);
-        
-        drawInvaders();
- 
-    };
-=======
-
-
->>>>>>> 58d3d1008c2d85bfe11074d92c57c8022e14e1ac
     function loadImage(imageName, imageFile) {
         var img = new Image();
         img.onload = function () {
@@ -115,10 +35,8 @@
           	if (i > 2) {
              	typeOfInvader = invaderType.invader3;
             }
-<<<<<<< HEAD
-            return false;
-        };
-=======
+
+ 
             
            	for(var j = 0; j < 5; j++){
            		var newInvader = new invader(typeOfInvader, startInvaderColumn, startInvaderRow);
@@ -228,5 +146,5 @@
         if (pos > -1) {
             bullets.splice(pos, 1);
         }
->>>>>>> 58d3d1008c2d85bfe11074d92c57c8022e14e1ac
+
     };
