@@ -3,12 +3,25 @@
 	var canvas;
     var context;
     var imageCache = {};
+    //Initializare Invader
     var invaderType = {
         invader1: 1,
         invader2: 2,
         invader3: 3
     };
     var invaders = [];
+
+    // Initializare Player,Bullets
+    
+    var keysDown = {};
+    var bullets = [];
+
+    var player = Player;
+    var bullet = Bullet;
+
+    player.init();
+    bullet.init();
+    var startPosition = player.getPoz();
 
     function loadImage(imageName, imageFile) {
         var img = new Image();
@@ -21,6 +34,8 @@
     loadImage('invader1', '../img/monster1.png');
     loadImage('invader2', '../img/monster1.png');
     loadImage('invader3', '../img/monster1.png');
+    loadImage('bomba1', '../img/bomba1.png');
+    loadImage('student1', '../img/student1.png');
 
     function createInvaders(){
 
@@ -35,10 +50,7 @@
           	if (i > 2) {
              	typeOfInvader = invaderType.invader3;
             }
-
- 
-            
-           	for(var j = 0; j < 5; j++){
+            for(var j = 0; j < 5; j++){
            		var newInvader = new invader(typeOfInvader, startInvaderColumn, startInvaderRow);
                 invaders.push(newInvader);
             	startInvaderColumn = startInvaderColumn + 65;
@@ -48,16 +60,10 @@
     };
 	window.onload = function(){
     	canvas = document.getElementById('canvas');
-    	context = canvas.getContext('2d'); 
+    	context = canvas.getContext('2d');
+        context.drawImage(imageCache['student1'], startPosition, 630, 130, 100);
 
     	createInvaders();
-
-    	 canvas.addEventListener('keydown', function(e) {
-            handleKeypress(e);
-        });
-        canvas.addEventListener('keyup', function(e) {
-            handleKeypress(e);
-        });
         
         setInterval(gameLoop, 1000/30);
 
@@ -65,9 +71,20 @@
     function gameLoop() {
         context.fillStyle = 'black';
         context.fillRect(0, 0, canvas.width, canvas.height);
+        drawElements();
         drawInvaders();
         moveInvaders();
+     
 	};
+
+    document.addEventListener("keydown", keyDownTextField, false);
+
+    function drawElements() {
+        player.clear();
+        poz = player.getPoz();
+        pozY = bullet.getPoz();
+        player.drawPlayer(poz);
+    }
 
 	function drawInvaders() {
         if (invaders.length > 0) {
@@ -148,3 +165,20 @@
         }
 
     };
+
+    function keyDownTextField(e) {
+        var keyCode = e.keyCode;
+  
+        if (keyCode == 37) {
+            player.moveLeft();
+            drawElements();
+        }       
+        if (keyCode == 39) {
+            player.moveRight();
+            drawElements();
+        }
+        if (keyCode == 32) {
+            player.shoot();
+            drawElements();
+        }  
+    }
