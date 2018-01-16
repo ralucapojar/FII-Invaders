@@ -1,33 +1,15 @@
-    var canvas;
+	//--------------------------Vlad
+
+	var canvas;
     var context;
     var imageCache = {};
-    var playerShip;
-    var INVADER_HORIZ_GAP = 35;
-    var INVADER_VERT_GAP = 30;
-    var INVADER_MOVE_SPEED = 2;
-    var INVADER_BULLET_SPEED = 20;
-    var PLAYER_SHIP_SPEED = 10;
-    var PLAYER_BULLET_SPEED = 15;
-    var PLAYER_BASES = 4;
-    var SCALE_FACTOR = 0.25;
-    var INVADER_MAX_WIDTH = 96 * SCALE_FACTOR;
-    var INVADER_MAX_HEIGHT = 64 * SCALE_FACTOR;
-    var INVADER_START_SPEED = 75;
-    var INVADER_START_BULLET_FREQUENCY = 500;
     var invaderType = {
         invader1: 1,
         invader2: 2,
         invader3: 3
     };
-    var bulletType = {
-        player: 1,
-        invader: 2
-    };
-    var invaderDirection = {
-        left: 1,
-        right: 2
-    };
     var invaders = [];
+<<<<<<< HEAD
     var bullets = [];
     var keyMap = {};
     var bases = [];
@@ -104,6 +86,10 @@
         drawInvaders();
  
     };
+=======
+
+
+>>>>>>> 58d3d1008c2d85bfe11074d92c57c8022e14e1ac
     function loadImage(imageName, imageFile) {
         var img = new Image();
         img.onload = function () {
@@ -112,60 +98,135 @@
         img.src = imageFile;
     };
    
-   
-    function invader(type, startX, startY) {
-        this.lastMoveTick = this.lastBulletTick = (new Date()).getTime();
-        this.type = type;
-        this.firing = false;
-        this.direction = invaderMoveDirection;
-        this.image = imageCache['invader' + this.type];
+    loadImage('invader1', '../img/monster1.png');
+    loadImage('invader2', '../img/monster1.png');
+    loadImage('invader3', '../img/monster1.png');
 
-        this.width = this.image.width * SCALE_FACTOR;
-        this.height = this.image.height * SCALE_FACTOR;
-        this.x = startX - (INVADER_MAX_WIDTH / 2);
-        this.y = startY - (INVADER_MAX_HEIGHT / 2);
-        this.count = 0;
-        this.draw = function() {
-            this.image = imageCache['invader' + this.type];
+    function createInvaders(){
 
-            context.drawImage(this.image, this.x, this.y, this.width, this.height);
-        };
-        this.move = function() {
-            var currentTime = (new Date()).getTime();
-            if (this.firing && (currentTime - this.lastBulletTick > invaderBulletFrequency)) {
-                fireBullet(bulletType.invader, this);
-                this.lastBulletTick = currentTime;
-                this.firing = false;
-            }            
-            if (currentTime - this.lastMoveTick > invaderSpeed) {
-                if (this.direction === invaderDirection.right) {
-                    if (this.x + INVADER_MOVE_SPEED < canvas.width) {
-                        this.x += INVADER_MOVE_SPEED;
-                       
-                    } else {
-                        // invaderMoveDirection = invaderDirection.left;
-                        // this.direction = invaderMoveDirection;
-                        invaderChangeDirection();
-                    }
-                } else {
-                    if (this.x - INVADER_MOVE_SPEED > 0) {
-                        this.x -= INVADER_MOVE_SPEED;
-                       
-                    } else {
-                        // invaderMoveDirection = invaderDirection.right;
-                        // this.direction = invaderMoveDirection;
-                        invaderChangeDirection();
-                    }
-                }
-                this.lastMoveTick = currentTime;
+    	var startInvaderRow=6;
+    	var typeOfInvader = invaderType.invader1;
+    	for (var i = 0; i < 4; i++) {
+            var startInvaderColumn =20;
+            var typeOfInvader = invaderType.invader1;
+            if (i === 1 || i === 2) {
+                typeOfInvader = invaderType.invader2;
             }
-        };
-        this.hitTest = function(x, y) {
-            if (x > this.x && x < this.x + this.width) {
-                if (y > this.y && y < this.y + this.height) {
-                    return true;
-                }
+          	if (i > 2) {
+             	typeOfInvader = invaderType.invader3;
             }
+<<<<<<< HEAD
             return false;
         };
+=======
+            
+           	for(var j = 0; j < 5; j++){
+           		var newInvader = new invader(typeOfInvader, startInvaderColumn, startInvaderRow);
+                invaders.push(newInvader);
+            	startInvaderColumn = startInvaderColumn + 65;
+    		};
+    		startInvaderRow = startInvaderRow + 30;
+    	};
+    };
+	window.onload = function(){
+    	canvas = document.getElementById('canvas');
+    	context = canvas.getContext('2d'); 
+
+    	createInvaders();
+
+    	 canvas.addEventListener('keydown', function(e) {
+            handleKeypress(e);
+        });
+        canvas.addEventListener('keyup', function(e) {
+            handleKeypress(e);
+        });
+        
+        setInterval(gameLoop, 1000/30);
+
+    };
+    function gameLoop() {
+        context.fillStyle = 'black';
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        drawInvaders();
+        moveInvaders();
+	};
+
+	function drawInvaders() {
+        if (invaders.length > 0) {
+            invaders.forEach(function(invaderIcon) {
+                invaderIcon.draw();
+
+                
+            });
+        }
+    };
+
+    function moveInvaders() {
+        if (invaders.length > 0) {
+            invaders.forEach(function(invaderIcon) {
+               	invaderIcon.move();
+
+                
+            });
+        }
+    };
+
+    function invader(type, startX, startY) {
+        
+        this.type = type;
+     	this.image = imageCache['invader' + this.type];
+     	this.x = startX;
+        this.y = startY;
+        
+        this.draw = function() {
+            context.drawImage(imageCache['invader'+this.type],this.x,this.y,67,55);
+
+        };
+
+        this.currentStage = 0;
+        this.currentAmount = 0;
+     	this.stage = [
+        	{
+        		x:2,
+        		y:0,
+        		amount:330// 660 daca crestem x impartim valoarea asta la x
+			},
+			{
+        		x:0,
+        		y:2,
+        		amount:25
+			},
+			{
+        		x:-2,
+        		y:0,
+        		amount:330
+			},
+			{
+        		x:0,
+        		y:2,
+        		amount:25
+			}];
+
+		this.move = function(){
+			this.x += this.stage[this.currentStage].x;
+			this.y += this.stage[this.currentStage].y;
+			this.currentAmount++;
+			if(this.currentAmount>=this.stage[this.currentStage].amount){
+				this.currentStage = (this.currentStage + 1)%4;
+				this.currentAmount = 0;
+			}
+			console.log(this.currentAmount);
+		};
+        
+        	
+
+
+    };
+
+    function removeBullet(bullet) {
+        var pos = bullets.indexOf(bullet);
+        if (pos > -1) {
+            bullets.splice(pos, 1);
+        }
+>>>>>>> 58d3d1008c2d85bfe11074d92c57c8022e14e1ac
     };
