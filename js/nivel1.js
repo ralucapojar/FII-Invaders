@@ -133,7 +133,7 @@
 				this.currentStage = (this.currentStage + 1)%4;
 				this.currentAmount = 0;
 			}
-			console.log(this.currentAmount);
+			//console.log(this.currentAmount);
 		};
         
         	

@@ -15,7 +15,7 @@ loadImage('student1', '../img/student1.png');
 setInterval(drawElements, 20);
 
 window.onload = function() {
-  canvas = document.getElementById('cs');
+  canvas = document.getElementById('canvas');
   context = canvas.getContext('2d');
   context.drawImage(imageCache['student1'], startPosition, 630, 130, 100);
 };
@@ -41,7 +41,7 @@ function keyDownTextField(e) {
     drawElements();
   }
   if (keyCode == 32) {
-    player.fire();
+    player.shoot();
     drawElements();
   }  
 }

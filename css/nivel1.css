@@ -126,17 +126,14 @@ body {
   }
 }
 
-#cs{
+#canvas{
   border-style: ridge;
   border-color:red;
   position: absolute;
   top: 13%;
-<<<<<<< HEAD
-  left: 23%;
-=======
   left: 32%;
->>>>>>> 58d3d1008c2d85bfe11074d92c57c8022e14e1ac
   width: 700px;
-  height: 700px;
+  height: 500px;
   background-color: black;
+
 }

@@ -8,7 +8,7 @@ var Player;
 			  speedX: 0, // movement in pixels per second
 			  x: 0,
 			  y: 0,
-			  fires: []
+			  bullets: []
 		};
 		
 		return {
@@ -19,12 +19,13 @@ var Player;
 					startPosition: 450, 
 					x: 130,
 					y: 100,
-					fires: fire()
+					bullets:[]
 				}
 			},
-			fire : function(){
-				this.fires.push(startPosition);
-			},
+			 shoot: function() {
+			    var bullet = Player.getPoz();
+			    this.bullets.push(bullet);
+			  },
 
 			clear : function(){
 				context.clearRect(0, 0, canvas.width, canvas.height);
