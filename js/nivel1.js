@@ -10,6 +10,7 @@
         invader3: 3
     };
     var invaders = [];
+    var bulletsInvaders = [];
 
     // Initializare Player,Bullets
     
@@ -36,6 +37,7 @@
     loadImage('invader3', '../img/monster1.png');
     loadImage('bomba1', '../img/bomba1.png');
     loadImage('student1', '../img/student1.png');
+    loadImage('bulletsInvaders', '../img/bomba1.png');
 
     function createInvaders(){
 
@@ -88,9 +90,16 @@
 
 	function drawInvaders() {
         if (invaders.length > 0) {
+            var contor = 0;
             invaders.forEach(function(invaderIcon) {
-                invaderIcon.draw();
-
+                if(contor%2===1)
+                {   
+                    invaderIcon.draw();
+                    invaderIcon.drawBullet();
+                }
+                else
+                    invaderIcon.draw();
+                contor++;
                 
             });
         }
@@ -98,11 +107,19 @@
 
     function moveInvaders() {
         if (invaders.length > 0) {
+            var contor = 0;
             invaders.forEach(function(invaderIcon) {
-               	invaderIcon.move();
-
+                if(contor%2===1)
+                {   
+                    invaderIcon.move();
+                    invaderIcon.moveBullet();
+                }
+                else
+                    invaderIcon.move();
+                contor++;
                 
             });
+
         }
     };
 
@@ -117,6 +134,21 @@
             context.drawImage(imageCache['invader'+this.type],this.x,this.y,67,55);
 
         };
+
+        this.drawBullet = function() {
+            context.drawImage(imageCache['bulletsInvaders'],this.xBullet,this.yBullet,20,20);
+
+        };
+
+        this.currentAmountBullet = 0;
+        this.xBullet = this.x;
+        this.yBullet = this.y;
+
+        this.moveBullet = function() {
+            this.yBullet = this.yBullet + 2;
+            
+        };
+
 
         this.currentStage = 0;
         this.currentAmount = 0;
@@ -150,12 +182,12 @@
 				this.currentStage = (this.currentStage + 1)%4;
 				this.currentAmount = 0;
 			}
-			//console.log(this.currentAmount);
+			
 		};
+
+        
         
         	
-
-
     };
 
     function removeBullet(bullet) {
