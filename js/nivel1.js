@@ -13,7 +13,7 @@
 
     //Initializare Bullets Invader
 
-    var bulletsInvaders = [];
+    var invadersBullets = [];
     var contor = 0;
 
     // Initializare Player,Bullets
@@ -41,7 +41,7 @@
     loadImage('invader3', '../img/monster1.png');
     loadImage('bomba1', '../img/bomba1.png');
     loadImage('student1', '../img/student1.png');
-    loadImage('bulletsInvaders', '../img/bomba1.png');
+    loadImage('invadersBullets', '../img/bomba1.png');
 
     function createInvaders(){
 
@@ -70,7 +70,7 @@
         context.drawImage(imageCache['student1'], startPosition, 630, 130, 100);
 
     	createInvaders();
-        setInterval(gameLoop, 1000/30);
+        setInterval(gameLoop, 33);
 
     };
     
@@ -87,17 +87,16 @@
                 if(invaders[random].currentStage != 1 &&  invaders[random].currentStage != 3 )
                 {
                 var newBullet = {
-                    bulletX:invaders[random].x +2,
-                    bulletY:invaders[random].y +2,
+                    xBullet:invaders[random].x +2,
+                    yBullet:invaders[random].y +2,
                     amount:600
                 }
 
-                bulletsInvaders.push(newBullet);
-                console.log(newBullet);
+                invadersBullets.push(newBullet);
                 };
             };
             
-        };
+        }; 
         drawElements();
         drawInvaders();
         drawBullets();
@@ -125,9 +124,9 @@
     };
 
     function drawBullets() {
-        if (bulletsInvaders.length > 0) {
-            bulletsInvaders.forEach(function(bulletIcon) {
-                context.drawImage(imageCache['bulletsInvaders'],bulletIcon.bulletX,bulletIcon.bulletY,20,20);
+        if (invadersBullets.length > 0) {
+            invadersBullets.forEach(function(bulletIcon) {
+                context.drawImage(imageCache['invadersBullets'],bulletIcon.xBullet,bulletIcon.yBullet,20,20);
                 
             });
         }
@@ -143,10 +142,10 @@
     };
 
     function moveBullets() {
-        if (bulletsInvaders.length > 0) {
-            bulletsInvaders.forEach(function(bulletIcon) {
+        if (invadersBullets.length > 0) {
+            invadersBullets.forEach(function(bulletIcon) {
                 bulletIcon.currentAmountBullet = 0;
-                bulletIcon.bulletY = bulletIcon.bulletY + 2;
+                bulletIcon.yBullet = bulletIcon.yBullet + 3;
             });
         }
     };
@@ -212,15 +211,15 @@
   
         if (keyCode == 37) {
             player.moveLeft();
-            drawElements();
+            //drawElements();
         }       
         if (keyCode == 39) {
             player.moveRight();
-            drawElements();
+            //drawElements();
         }
         if (keyCode == 32) {
             player.shoot();
-            drawElements();
+            //drawElements();
         }  
     }
 
