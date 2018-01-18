@@ -10,7 +10,11 @@
         invader3: 3
     };
     var invaders = [];
+
+    //Initializare Bullets Invader
+
     var bulletsInvaders = [];
+    var contor = 0;
 
     // Initializare Player,Bullets
     
@@ -66,17 +70,40 @@
         context.drawImage(imageCache['student1'], startPosition, 630, 130, 100);
 
     	createInvaders();
-        
         setInterval(gameLoop, 1000/30);
 
     };
+    
     function gameLoop() {
         context.fillStyle = 'black';
         context.fillRect(0, 0, canvas.width, canvas.height);
+
+        if(contor % 50 === 0)
+        {
+            if(invaders.length > 0) 
+            {
+                var random = Math.floor(Math.random() * invaders.length);
+                
+                if(invaders[random].currentStage != 1 &&  invaders[random].currentStage != 3 )
+                {
+                var newBullet = {
+                    bulletX:invaders[random].x +2,
+                    bulletY:invaders[random].y +2,
+                    amount:600
+                }
+
+                bulletsInvaders.push(newBullet);
+                console.log(newBullet);
+                };
+            };
+            
+        };
         drawElements();
         drawInvaders();
+        drawBullets();
         moveInvaders();
-     
+        moveBullets();
+        contor++;
 	};
 
     document.addEventListener("keydown", keyDownTextField, false);
@@ -90,16 +117,17 @@
 
 	function drawInvaders() {
         if (invaders.length > 0) {
-            var contor = 0;
             invaders.forEach(function(invaderIcon) {
-                if(contor%2===1)
-                {   
-                    invaderIcon.draw();
-                    invaderIcon.drawBullet();
-                }
-                else
-                    invaderIcon.draw();
-                contor++;
+                invaderIcon.draw();
+                
+            });
+        }
+    };
+
+    function drawBullets() {
+        if (bulletsInvaders.length > 0) {
+            bulletsInvaders.forEach(function(bulletIcon) {
+                context.drawImage(imageCache['bulletsInvaders'],bulletIcon.bulletX,bulletIcon.bulletY,20,20);
                 
             });
         }
@@ -107,22 +135,21 @@
 
     function moveInvaders() {
         if (invaders.length > 0) {
-            var contor = 0;
             invaders.forEach(function(invaderIcon) {
-                if(contor%2===1)
-                {   
-                    invaderIcon.move();
-                    invaderIcon.moveBullet();
-                }
-                else
-                    invaderIcon.move();
-                contor++;
-                
+                invaderIcon.move();
             });
 
         }
     };
 
+    function moveBullets() {
+        if (bulletsInvaders.length > 0) {
+            bulletsInvaders.forEach(function(bulletIcon) {
+                bulletIcon.currentAmountBullet = 0;
+                bulletIcon.bulletY = bulletIcon.bulletY + 2;
+            });
+        }
+    };
     function invader(type, startX, startY) {
         
         this.type = type;
@@ -134,21 +161,6 @@
             context.drawImage(imageCache['invader'+this.type],this.x,this.y,67,55);
 
         };
-
-        this.drawBullet = function() {
-            context.drawImage(imageCache['bulletsInvaders'],this.xBullet,this.yBullet,20,20);
-
-        };
-
-        this.currentAmountBullet = 0;
-        this.xBullet = this.x;
-        this.yBullet = this.y;
-
-        this.moveBullet = function() {
-            this.yBullet = this.yBullet + 2;
-            
-        };
-
 
         this.currentStage = 0;
         this.currentAmount = 0;
@@ -185,9 +197,6 @@
 			
 		};
 
-        
-        
-        	
     };
 
     function removeBullet(bullet) {
@@ -214,3 +223,5 @@
             drawElements();
         }  
     }
+
+       
