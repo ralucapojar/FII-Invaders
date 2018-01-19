@@ -99,7 +99,7 @@
             
         }; 
         drawPlayer();
-        drawBulletsPlayer();
+        
         drawInvaders();
         drawBulletsInvaders();
         moveInvaders();
@@ -233,6 +233,7 @@
         }
         if (keyCode == 32) {
             player.shoot();
+            drawBulletsPlayer();
         }  
     }
 

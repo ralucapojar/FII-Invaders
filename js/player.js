@@ -44,7 +44,7 @@ var Player;
 				context.drawImage( imageCache[playerObj.img], poz, 655, playerObj.x, playerObj.y);     
 			},
 			getListBullets : function(){
-    			return playerObj.bullets;
+    			return this.bullets;
    			}
 
 		}
