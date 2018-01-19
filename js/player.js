@@ -4,6 +4,7 @@ var Player;
 
 	function CreatePlayer (){
 		var playerObj = {
+			  life: 0,
 			  img: '',
 			  speedX: 0, // movement in pixels per second
 			  x: 0,
@@ -14,6 +15,7 @@ var Player;
 		return {
 			init: function(){
 				playerObj = {
+					life: 3,
 					img: 'student1',
 					speedX: 30, // movement in pixels per second
 					startPosition: 450, 
@@ -27,7 +29,12 @@ var Player;
 			    bullets.push(bullet);
 			    this.bullets = bullets;
 			  },
-
+			removeLife : function(){
+				playerObj.life = playerObj.life - 1 ;
+			}, 
+			getLife : function(){
+				return playerObj.life;
+			},
 			clear : function(){
 				context.clearRect(0, 0, canvas.width, canvas.height);
 			},
