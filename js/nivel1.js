@@ -42,6 +42,7 @@
     loadImage('bomba1', '../img/bomba1.png');
     loadImage('student1', '../img/student1.png');
     loadImage('invadersBullets', '../img/bomba1.png');
+    loadImage('playerBullets', '../img/bomba1.png');
 
     function createInvaders(){
 
@@ -67,7 +68,7 @@
 	window.onload = function(){
     	canvas = document.getElementById('canvas');
     	context = canvas.getContext('2d');
-        context.drawImage(imageCache['student1'], startPosition, 630, 130, 100);
+        context.drawImage(imageCache['student1'], startPosition, 655, 130, 100);
 
     	createInvaders();
         setInterval(gameLoop, 33);
@@ -87,8 +88,8 @@
                 if(invaders[random].currentStage != 1 &&  invaders[random].currentStage != 3 )
                 {
                 var newBullet = {
-                    xBullet:invaders[random].x +2,
-                    yBullet:invaders[random].y +2,
+                    xBullet:invaders[random].x +10,
+                    yBullet:invaders[random].y +22,
                     amount:600
                 }
 
@@ -97,22 +98,35 @@
             };
             
         }; 
-        drawElements();
+        drawPlayer();
+        drawBulletsPlayer();
         drawInvaders();
-        drawBullets();
+        drawBulletsInvaders();
         moveInvaders();
         moveBullets();
+
         contor++;
 	};
 
     document.addEventListener("keydown", keyDownTextField, false);
 
-    function drawElements() {
-        player.clear();
+    function drawPlayer() {
+        
         poz = player.getPoz();
         pozY = bullet.getPoz();
         player.drawPlayer(poz);
     }
+
+    function drawBulletsPlayer(){
+        playerBullets = player.getListBullets();
+        console.log(playerBullets);
+        if (playerBullets.length > 0) {
+            playerBullets.forEach(function(bulletIcon) {
+                context.drawImage(imageCache['playerBullets'],bulletIcon,650,20,20);
+                
+            });
+        }
+    };
 
 	function drawInvaders() {
         if (invaders.length > 0) {
@@ -123,7 +137,7 @@
         }
     };
 
-    function drawBullets() {
+    function drawBulletsInvaders() {
         if (invadersBullets.length > 0) {
             invadersBullets.forEach(function(bulletIcon) {
                 context.drawImage(imageCache['invadersBullets'],bulletIcon.xBullet,bulletIcon.yBullet,20,20);
@@ -211,15 +225,14 @@
   
         if (keyCode == 37) {
             player.moveLeft();
-            //drawElements();
+            
         }       
         if (keyCode == 39) {
             player.moveRight();
-            //drawElements();
+            
         }
         if (keyCode == 32) {
             player.shoot();
-            //drawElements();
         }  
     }
 

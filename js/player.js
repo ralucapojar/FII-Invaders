@@ -24,7 +24,8 @@ var Player;
 			},
 			 shoot: function() {
 			    var bullet = Player.getPoz();
-			    this.bullets.push(bullet);
+			    bullets.push(bullet);
+			    this.bullets = bullets;
 			  },
 
 			clear : function(){
@@ -40,8 +41,11 @@ var Player;
 				(playerObj.startPosition + playerObj.speedX < 910) ? playerObj.startPosition += playerObj.speedX :  playerObj.startPosition            
 			},
 			drawPlayer : function(poz) {
-				context.drawImage( imageCache[playerObj.img], poz, 630, playerObj.x, playerObj.y);     
-			} 
+				context.drawImage( imageCache[playerObj.img], poz, 655, playerObj.x, playerObj.y);     
+			},
+			getListBullets : function(){
+    			return playerObj.bullets;
+   			}
 
 		}
 	};
