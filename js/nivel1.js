@@ -41,8 +41,8 @@
     loadImage('invader3', '../img/monster1.png');
     loadImage('bomba1', '../img/bomba1.png');
     loadImage('student1', '../img/student1.png');
-    loadImage('invadersBullets', '../img/bomba1.png');
-    loadImage('playerBullets', '../img/bomba1.png');
+    loadImage('invadersBullets', '../img/bullet.png');
+    loadImage('playerBullets', '../img/playerBullets.png');
     loadImage('test', '../img/bomba_nivel2.png');
 
     function createInvaders(){
@@ -69,7 +69,7 @@
 	window.onload = function(){
     	canvas = document.getElementById('canvas');
     	context = canvas.getContext('2d');
-        context.drawImage(imageCache['student1'], player.getPoz(), 655, 130, 100);
+        context.drawImage(imageCache['student1'], player.getPoz(), 655, 100, 100);
 
     	createInvaders();
         setInterval(gameLoop, 33);
@@ -77,6 +77,7 @@
     };
     
     function gameLoop() {
+
         context.fillStyle = 'black';
         context.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -126,7 +127,6 @@
                 }
             }
         }
-
     }
     // ---------------------Draw Elements
 
@@ -139,7 +139,7 @@
     function drawBulletsPlayer(){
         if (playerBullets.length > 0) {
             playerBullets.forEach(function(bulletIcon) {
-                context.drawImage(imageCache['playerBullets'],bulletIcon.xBullet,bulletIcon.yBullet,20,20);
+                context.drawImage(imageCache['playerBullets'],bulletIcon.xBullet,bulletIcon.yBullet,10,20);
                 
             });
         }

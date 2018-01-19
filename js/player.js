@@ -17,7 +17,7 @@ var Player;
 					img: 'student1',
 					speedX: 30, // movement in pixels per second
 					startPosition: 450, 
-					x: 130,
+					x: 100,
 					y: 100,
 					bullets:[]
 				}
