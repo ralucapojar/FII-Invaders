@@ -22,11 +22,11 @@
     var bullets = [];
 
     var player = Player;
-    var bullet = Bullet;
+    
+    var playerBullets = [];
 
     player.init();
-    bullet.init();
-    var startPosition = player.getPoz();
+    
 
     function loadImage(imageName, imageFile) {
         var img = new Image();
@@ -43,6 +43,7 @@
     loadImage('student1', '../img/student1.png');
     loadImage('invadersBullets', '../img/bomba1.png');
     loadImage('playerBullets', '../img/bomba1.png');
+    loadImage('test', '../img/bomba_nivel2.png');
 
     function createInvaders(){
 
@@ -68,7 +69,7 @@
 	window.onload = function(){
     	canvas = document.getElementById('canvas');
     	context = canvas.getContext('2d');
-        context.drawImage(imageCache['student1'], startPosition, 655, 130, 100);
+        context.drawImage(imageCache['student1'], player.getPoz(), 655, 130, 100);
 
     	createInvaders();
         setInterval(gameLoop, 33);
@@ -98,31 +99,47 @@
             };
             
         }; 
+        checkInvaders();
         drawPlayer();
-        
+        drawBulletsPlayer();
         drawInvaders();
         drawBulletsInvaders();
         moveInvaders();
-        moveBullets();
+        moveBulletsInvaders();
+        moveBulletsPlayer();
 
         contor++;
 	};
 
     document.addEventListener("keydown", keyDownTextField, false);
 
+    function checkInvaders(){
+        // 67,55 20 20
+        for (var i = 0; i < invaders.length; i++) {
+            for(var j = 0; j < playerBullets.length; j++)
+            {
+                if((playerBullets[j].xBullet >= invaders[i].x && playerBullets[j].xBullet <= invaders[i].x + 67) && (playerBullets[j].yBullet >= invaders[i].y && playerBullets[j].yBullet <= invaders[i].y + 55))
+                {   
+                    invaders.splice(i,1);
+                    playerBullets.splice(j,1);
+                    //context.drawImage(imageCache['test'],invaders[i].x,invaders[i].y,67,50);
+                }
+            }
+        }
+
+    }
+    // ---------------------Draw Elements
+
     function drawPlayer() {
         
         poz = player.getPoz();
-        pozY = bullet.getPoz();
         player.drawPlayer(poz);
     }
 
     function drawBulletsPlayer(){
-        playerBullets = player.getListBullets();
-        console.log(playerBullets);
         if (playerBullets.length > 0) {
             playerBullets.forEach(function(bulletIcon) {
-                context.drawImage(imageCache['playerBullets'],bulletIcon,650,20,20);
+                context.drawImage(imageCache['playerBullets'],bulletIcon.xBullet,bulletIcon.yBullet,20,20);
                 
             });
         }
@@ -146,6 +163,8 @@
         }
     };
 
+    // ------------------------Move Elements
+
     function moveInvaders() {
         if (invaders.length > 0) {
             invaders.forEach(function(invaderIcon) {
@@ -155,7 +174,7 @@
         }
     };
 
-    function moveBullets() {
+    function moveBulletsInvaders() {
         if (invadersBullets.length > 0) {
             invadersBullets.forEach(function(bulletIcon) {
                 bulletIcon.currentAmountBullet = 0;
@@ -163,6 +182,15 @@
             });
         }
     };
+
+    function moveBulletsPlayer(){
+         if (playerBullets.length > 0) {
+            playerBullets.forEach(function(bulletIcon) {
+                bulletIcon.yBullet = bulletIcon.yBullet - 3;
+            });
+        }
+    };
+
     function invader(type, startX, startY) {
         
         this.type = type;
@@ -232,9 +260,19 @@
             
         }
         if (keyCode == 32) {
-            player.shoot();
-            drawBulletsPlayer();
+            
+            if(contor % 2 === 0)
+            {
+
+             var newBullet = {
+                    xBullet:player.getPoz()+30,
+                    yBullet:645,
+                    amount:650
+                }
+            playerBullets.push(newBullet);
+            }
+           
         }  
-    }
+    };
 
        
