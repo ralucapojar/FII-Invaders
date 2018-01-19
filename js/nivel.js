@@ -17,9 +17,7 @@
         }
     }
 
-    function gameOver(){
-        if (players.length == 0){
-             
-        }
-
-    }
+function printLife(){  
+    var text = " Life: " + player.getLife() + " *";          // Create a <li> node   
+    document.getElementById("noLife").innerHTML = text;                         // Append the text to <li> 
+}
