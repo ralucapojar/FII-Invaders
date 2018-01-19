@@ -1,55 +1,25 @@
-var context, canvas;
-var imageCache = {};
-var keysDown = {};
-var bullets = [];
 
-var player = Player;
-var bullet = Bullet;
+    function checkPlayer(){
+        // 130, 100 20 20
+        var life = player.getLife();
+        var x = player.getPoz();
+        for(var j = 0; j < invadersBullets.length; j++)
+        {
+            if((invadersBullets[j].xBullet >= x && invadersBullets[j].xBullet <= x + 100) && (invadersBullets[j].yBullet >= 655 && invadersBullets[j].yBullet <= 700))
+            {   
+                invadersBullets.splice(j,1);
+                player.removeLife();
+                if ( life == 0 ) {
+                   players.pop();
+                }
+               
+            }
+        }
+    }
 
-player.init();
-bullet.init();
-var startPosition = player.getPoz();
-loadImage('bomba1', '../img/bomba1.png');
-loadImage('student1', '../img/student1.png');
+    function gameOver(){
+        if (players.length == 0){
+             
+        }
 
-setInterval(drawElements, 20);
-
-window.onload = function() {
-  canvas = document.getElementById('canvas');
-  context = canvas.getContext('2d');
-  context.drawImage(imageCache['student1'], startPosition, 630, 130, 100);
-};
-
-function drawElements() {
-  player.clear();
-  poz = player.getPoz();
-  pozY = bullet.getPoz();
-  player.drawPlayer(poz);
-}
-
-document.addEventListener("keydown", keyDownTextField, false);
-
-function keyDownTextField(e) {
-  var keyCode = e.keyCode;
-  
-  if (keyCode == 37) {
-    player.moveLeft();
-    drawElements();
-  }       
-  if (keyCode == 39) {
-    player.moveRight();
-    drawElements();
-  }
-  if (keyCode == 32) {
-    player.shoot();
-    drawElements();
-  }  
-}
-
-function loadImage(imageName, imageFile) {
-  var img = new Image();
-  img.onload = function () {
-    imageCache[imageName] = img;
-  };
-  img.src = imageFile;
-};
+    }
