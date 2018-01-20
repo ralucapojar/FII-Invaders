@@ -3,6 +3,7 @@
 	var canvas;
     var context;
     var imageCache = {};
+    var gameOver = false;
     //Initializare Invader
     var invaderType = {
         invader1: 1,
@@ -44,6 +45,8 @@
     loadImage('invadersBullets', '../img/bullet.png');
     loadImage('playerBullets', '../img/playerBullets.png');
     loadImage('test', '../img/bomba_nivel2.png');
+    loadImage('gameOver', '../img/gameOver.png');
+
 
     function createInvaders(){
 
@@ -101,6 +104,9 @@
             
         }; 
         checkInvaders();
+        checkPlayer();
+        if(gameOver === false)
+        {
         drawPlayer();
         drawBulletsPlayer();
         drawInvaders();
@@ -108,7 +114,9 @@
         moveInvaders();
         moveBulletsInvaders();
         moveBulletsPlayer();
-
+        }
+        else
+            context.drawImage(imageCache['gameOver'],0,0,canvas.width,canvas.height);
         contor++;
 	};
 
@@ -128,6 +136,26 @@
             }
         }
     }
+
+    function checkPlayer(){
+        // 130, 100 20 20
+        var life = player.getLife();
+        var x = player.getPoz();
+        for(var j = 0; j < invadersBullets.length; j++)
+        {
+            if((invadersBullets[j].xBullet >= x && invadersBullets[j].xBullet <= x + 100) && (invadersBullets[j].yBullet >= 655 && invadersBullets[j].yBullet <= 700))
+            {   
+                invadersBullets.splice(j,1);
+                player.removeLife();
+                if ( life == 1) {
+                   gameOver = true;
+
+                }
+               
+            }
+        }
+    }
+
     // ---------------------Draw Elements
 
     function drawPlayer() {
