@@ -1,3 +1,4 @@
+  var monsterTouch = 0 ;
   var score;
   var name;
 
@@ -105,6 +106,13 @@ var next = document.getElementsByClassName("btn-next");
         printLife();
         printScore();
 
+        if(invaders.length>0)
+        {
+            checkInvaders();
+        } else if( boss.length > 0) {
+            checkBoss();
+        }
+
         if(contor % 50 === 0)
         {
             if(invaders.length > 0) 
@@ -149,6 +157,25 @@ var next = document.getElementsByClassName("btn-next");
 
     document.addEventListener("keydown", keyDownTextField, false);
 
+ function checkBoss(){
+        if(boss.length>0){
+            for(var j = 0; j < playerBullets.length; j++)
+            {
+                if((playerBullets[j].xBullet >= boss[0].x && playerBullets[j].xBullet <= boss[0].x + 200) && (playerBullets[j].yBullet >= boss[0].y && playerBullets[j].yBullet <= boss[0].y + 200))
+                {   
+                    monsterTouch ++;
+                    playerBullets.splice(j,1);
+                    getScore();
+                    //context.drawImage(imageCache['test'],invaders[i].x,invaders[i].y,67,50);
+                }
+                if (monsterTouch > 10){
+                    boss.splice(0,1);
+                }
+
+            }
+        }      
+    }
+
     function checkInvaders(){
         // 67,55 20 20
         for (var i = 0; i < invaders.length; i++) {
@@ -159,6 +186,9 @@ var next = document.getElementsByClassName("btn-next");
                     invaders.splice(i,1);
                     playerBullets.splice(j,1);
                     getScore();
+                    if(invaders.length == 0){
+                            playerBullets = [];
+                    };
                     //context.drawImage(imageCache['test'],invaders[i].x,invaders[i].y,67,50);
                 }
             }
