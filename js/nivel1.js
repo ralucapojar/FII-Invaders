@@ -87,6 +87,7 @@
 
         context.fillStyle = 'black';
         context.fillRect(0, 0, canvas.width, canvas.height);
+        printLife();
 
         if(contor % 50 === 0)
         {
@@ -202,10 +203,7 @@
     };
 
     function drawBoss() {
-    
-                context.drawImage(imageCache['boss'],400,10,300,300);
-                
-        
+        context.drawImage(imageCache['boss'],400,10,300,300);
     };
 
     // ------------------------Move Elements
@@ -215,7 +213,6 @@
             invaders.forEach(function(invaderIcon) {
                 invaderIcon.move();
             });
-
         }
     };
 
