@@ -3,6 +3,7 @@
 	var canvas;
     var context;
     var imageCache = {};
+    var gameOver = false;
     //Initializare Invader
     var invaderType = {
         invader1: 1,
@@ -15,6 +16,10 @@
 
     var invadersBullets = [];
     var contor = 0;
+
+    //Initializare Boss
+
+    var boss = {};
 
     // Initializare Player,Bullets
     
@@ -39,11 +44,13 @@
     loadImage('invader1', '../img/monster1.png');
     loadImage('invader2', '../img/monster1.png');
     loadImage('invader3', '../img/monster1.png');
-    loadImage('bomba1', '../img/bomba1.png');
     loadImage('student1', '../img/student1.png');
     loadImage('invadersBullets', '../img/bullet.png');
     loadImage('playerBullets', '../img/playerBullets.png');
     loadImage('test', '../img/bomba_nivel2.png');
+    loadImage('gameOver', '../img/gameOver.png');
+    loadImage('boss', '../img/boss.png');
+
 
     function createInvaders(){
 
@@ -101,14 +108,25 @@
             
         }; 
         checkInvaders();
-        drawPlayer();
-        drawBulletsPlayer();
-        drawInvaders();
-        drawBulletsInvaders();
-        moveInvaders();
-        moveBulletsInvaders();
-        moveBulletsPlayer();
-
+        checkPlayer();
+        if(gameOver === false)
+        {
+            drawPlayer();
+            drawBulletsPlayer();
+            moveBulletsPlayer();
+            if(invaders.length>0){
+                drawInvaders();
+                drawBulletsInvaders();
+                moveInvaders();
+                moveBulletsInvaders();
+            }
+            else
+            {
+                drawBoss();
+            }
+        }
+        else
+            context.drawImage(imageCache['gameOver'],0,0,canvas.width,canvas.height);
         contor++;
 	};
 
@@ -128,6 +146,26 @@
             }
         }
     }
+
+    function checkPlayer(){
+        // 130, 100 20 20
+        var life = player.getLife();
+        var x = player.getPoz();
+        for(var j = 0; j < invadersBullets.length; j++)
+        {
+            if((invadersBullets[j].xBullet >= x && invadersBullets[j].xBullet <= x + 100) && (invadersBullets[j].yBullet >= 655 && invadersBullets[j].yBullet <= 700))
+            {   
+                invadersBullets.splice(j,1);
+                player.removeLife();
+                if ( life == 1) {
+                   gameOver = true;
+
+                }
+               
+            }
+        }
+    }
+
     // ---------------------Draw Elements
 
     function drawPlayer() {
@@ -158,6 +196,15 @@
         if (invadersBullets.length > 0) {
             invadersBullets.forEach(function(bulletIcon) {
                 context.drawImage(imageCache['invadersBullets'],bulletIcon.xBullet,bulletIcon.yBullet,20,20);
+                
+            });
+        }
+    };
+
+    function drawBoss() {
+        if (invadersBullets.length > 0) {
+            invadersBullets.forEach(function(bulletIcon) {
+                context.drawImage(imageCache['boss'],400,10,300,300);
                 
             });
         }
