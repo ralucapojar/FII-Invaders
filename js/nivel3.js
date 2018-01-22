@@ -1,3 +1,6 @@
+     var score;
+  var name;
+
     //--------------------------Vlad
 var again = document.getElementsByClassName("btn-again");
 var next = document.getElementsByClassName("btn-next");
@@ -78,6 +81,14 @@ var next = document.getElementsByClassName("btn-next");
         canvas = document.getElementById('canvas');
         context = canvas.getContext('2d');
         context.drawImage(imageCache['student1'], player.getPoz(), 655, 100, 100);
+        var url_string= window.location.href;
+        var url = new URL(url_string);
+        name = url.searchParams.get("name");
+        if (localStorage.getItem(name) === null) {
+            localStorage.setItem(name, 0);
+        } else {
+            score = parseInt(localStorage.getItem(name));
+        }       
 
         createInvaders();
         setInterval(gameLoop, 15);
@@ -89,6 +100,7 @@ var next = document.getElementsByClassName("btn-next");
         context.fillStyle = 'black';
         context.fillRect(0, 0, canvas.width, canvas.height);
         printLife();
+        printScore();
 
         if(contor % 50 === 0)
         {
@@ -143,6 +155,7 @@ var next = document.getElementsByClassName("btn-next");
                 {   
                     invaders.splice(i,1);
                     playerBullets.splice(j,1);
+                    getScore();
                     //context.drawImage(imageCache['test'],invaders[i].x,invaders[i].y,67,50);
                 }
             }
@@ -316,6 +329,27 @@ var next = document.getElementsByClassName("btn-next");
         }  
     };
 
+
+function getScore(){
+    score = parseInt(localStorage.getItem(name));
+    if (score  < 50 ){
+        score +=10;
+    }
+    if (score >= 50){
+        score +=20;
+    }
+    if (score >= 80){
+        score +=30;
+    }
+
+    localStorage.setItem(name, score);
+}
+
+function printScore(){ 
+    score = parseInt(localStorage.getItem(name)); 
+    var text = " Score: " + score;          // Create a <li> node   
+    document.getElementById("score").innerHTML = text;                         // Append the text to <li> 
+}
 
 function printLife(){  
     var text = " Life: " + player.getLife() + " *";          // Create a <li> node   

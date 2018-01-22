@@ -24,11 +24,11 @@ var Player;
 					bullets:[]
 				}
 			},
-			 shoot: function() {
-			    var bullet = Player.getPoz();
-			    bullets.push(bullet);
-			    this.bullets = bullets;
-			  },
+			shoot: function() {
+				var bullet = Player.getPoz();
+				bullets.push(bullet);
+				this.bullets = bullets;
+			},
 			removeLife : function(){
 				playerObj.life = playerObj.life - 1 ;
 			}, 

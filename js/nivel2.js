@@ -1,7 +1,11 @@
+  var score;
+  var name;
+
     //--------------------------Vlad
 var again = document.getElementsByClassName("btn-again");
 var next = document.getElementsByClassName("btn-next");
     var canvas;
+   
     var context;
     var imageCache = {};
     var gameOver = false;
@@ -78,6 +82,14 @@ var next = document.getElementsByClassName("btn-next");
     window.onload = function(){
         canvas = document.getElementById('canvas');
         context = canvas.getContext('2d');
+        var url_string= window.location.href;
+        var url = new URL(url_string);
+        name = url.searchParams.get("name");
+        if (localStorage.getItem(name) === null) {
+            localStorage.setItem(name, 0);
+        } else {
+            score = parseInt(localStorage.getItem(name));
+        }       
         context.drawImage(imageCache['student1'], player.getPoz(), 655, 100, 100);
 
         createInvaders();
@@ -91,6 +103,7 @@ var next = document.getElementsByClassName("btn-next");
 
         context.drawImage(imageCache['background'], 0, 0, canvas.width, canvas.height);
         printLife();
+        printScore();
 
         if(contor % 50 === 0)
         {
@@ -145,12 +158,27 @@ var next = document.getElementsByClassName("btn-next");
                 {   
                     invaders.splice(i,1);
                     playerBullets.splice(j,1);
+                    getScore();
                     //context.drawImage(imageCache['test'],invaders[i].x,invaders[i].y,67,50);
                 }
             }
         }
     }
 
+function getScore(){
+    score = parseInt(localStorage.getItem(name));
+    if (score  < 50 ){
+        score +=10;
+    }
+    if (score >= 50){
+        score +=20;
+    }
+    if (score >= 80){
+        score +=30;
+    }
+
+    localStorage.setItem(name, score);
+}
     function checkPlayer(){
         // 130, 100 20 20
         var life = player.getLife();
@@ -322,6 +350,12 @@ var next = document.getElementsByClassName("btn-next");
 function printLife(){  
     var text = " Life: " + player.getLife() + " *";          // Create a <li> node   
     document.getElementById("noLife").innerHTML = text;                         // Append the text to <li> 
+}
+
+function printScore(){ 
+    score = parseInt(localStorage.getItem(name)); 
+    var text = " Score: " + score;          // Create a <li> node   
+    document.getElementById("score").innerHTML = text;                         // Append the text to <li> 
 }
 
 function printBtnAgain(){
