@@ -148,3 +148,14 @@ body {
     text-align: -webkit-center;
     background-color: lightgoldenrodyellow;
 }
+
+.btn-again, .btn-next{
+  display: none;
+   height: 50px;
+  width: 150px;
+  margin: 0px;
+  color: darkred;
+  font-weight: bold;
+  text-align: -webkit-center;
+  background-color: lightgoldenrodyellow;
+}
