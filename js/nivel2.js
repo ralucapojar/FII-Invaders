@@ -39,7 +39,7 @@ var next = document.getElementsByClassName("btn-next");
         img.onload = function () {
             imageCache[imageName] = img;
         };
-        img.src = imageFile;
+        img.src = imageFile;    
     };
    
     loadImage('invader1', '../img/monster2_nivel2.png');
@@ -51,7 +51,7 @@ var next = document.getElementsByClassName("btn-next");
     loadImage('test', '../img/bullet.png');
     loadImage('gameOver', '../img/gameOver.png');
     loadImage('boss', '../img/boss.png');
-    loadImage('background', '../img/nivel_2.jpg');
+    loadImage('background', '../img/nive2.jpg');
 
 
     function createInvaders(){

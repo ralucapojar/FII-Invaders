@@ -106,7 +106,7 @@ body {
     opacity: 0.7;
 
 }
-
+/*
 @media screen and (min-width: 600px) {
   .box-game {
     left:20%;
@@ -129,7 +129,7 @@ body {
 @media screen and (max-width: 800px) {
   .box-game {
   	left:10%;
-  }
+  }*/
 
 #canvas{
   border-style: ridge;

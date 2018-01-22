@@ -45,7 +45,7 @@ var next = document.getElementsByClassName("btn-next");
     loadImage('invader1', '../img/monster_nivel3.png');
     loadImage('invader2', '../img/monster2_nivel2.png');
     loadImage('invader3', '../img/monster1_nivel2.png');
-    loadImage('student1', '../img/student1.png');
+    loadImage('student1', '../img/student_nivel2.png');
     loadImage('invadersBullets', '../img/bullet.png');
     loadImage('playerBullets', '../img/playerBullets.png');
     loadImage('test', '../img/bullet.png');
