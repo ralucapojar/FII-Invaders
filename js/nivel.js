@@ -1,5 +1,4 @@
- var again = document.getElementByClass("btn-again");
-var next = document.getElementByClass("btn-next");
+
 
     function checkPlayer(){
         // 130, 100 20 20
@@ -19,31 +18,5 @@ var next = document.getElementByClass("btn-next");
         }
     }
 
-function printLife(){  
-    var text = " Life: " + player.getLife() + " *";          // Create a <li> node   
-    document.getElementById("noLife").innerHTML = text;                         // Append the text to <li> 
-}
-
-function printBtnAgain(){
-    again.style.display = block;
-}
-
-function printBtnNext(){
-    next.style.display = block;
-}
-
-function removeBtnAgain(){
-    again.style.display = none;
-}
-
-function removeBtnNext(){
-    next.style.display = none;
-}
-
-function checkWin() {
-    if (invaders.length == 0) {
-        gameOver = true;
-    }
-};
 
 

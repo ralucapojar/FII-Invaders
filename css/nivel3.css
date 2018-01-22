@@ -135,10 +135,32 @@ body {
   border-style: ridge;
   border-color:red;
   position: absolute;
-  top: 22%;
-  left: 23%;
-  width: 1000px;
-  height: 600px;
+  top: 13%;
+  left: 32%;
+  width: 700px;
+  height: 500px;
   background-color: black;
 
+}
+
+.life, #noLife{
+    height: 50px;
+    width: 150px;
+    margin: 0px;
+    margin-left: 15%;
+    color: darkred;
+    font-weight: bold;
+    text-align: -webkit-center;
+    background-color: lightgoldenrodyellow;
+}
+
+.btn-again, .btn-next{
+  display: none;
+   height: 50px;
+  width: 150px;
+  margin: 0px;
+  color: darkred;
+  font-weight: bold;
+  text-align: -webkit-center;
+  background-color: lightgoldenrodyellow;
 }

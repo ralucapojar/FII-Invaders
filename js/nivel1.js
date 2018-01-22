@@ -1,5 +1,6 @@
 	//--------------------------Vlad
-
+var again = document.getElementsByClassName("btn-again");
+var next = document.getElementsByClassName("btn-next");
 	var canvas;
     var context;
     var imageCache = {};
@@ -47,7 +48,7 @@
     loadImage('student1', '../img/student1.png');
     loadImage('invadersBullets', '../img/bullet.png');
     loadImage('playerBullets', '../img/playerBullets.png');
-    loadImage('test', '../img/bomba_nivel2.png');
+    loadImage('test', '../img/bullet.png');
     loadImage('gameOver', '../img/gameOver.png');
     loadImage('boss', '../img/boss.png');
 
@@ -160,9 +161,7 @@
                 player.removeLife();
                 if ( life == 1) {
                    gameOver = true;
-
-                }
-               
+                }             
             }
         }
     }
@@ -317,4 +316,30 @@
         }  
     };
 
-       
+
+function printLife(){  
+    var text = " Life: " + player.getLife() + " *";          // Create a <li> node   
+    document.getElementById("noLife").innerHTML = text;                         // Append the text to <li> 
+}
+
+function printBtnAgain(){
+    again.style.display = block;
+}
+
+function printBtnNext(){
+    next.style.display = block;
+}
+
+function removeBtnAgain(){
+    again.style.display = none;
+}
+
+function removeBtnNext(){
+    next.style.display = none;
+}
+
+function checkWin() {
+    if (invaders.length == 0) {
+        gameOver = true;
+    }
+};
