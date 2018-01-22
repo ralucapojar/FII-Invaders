@@ -1,5 +1,5 @@
  var again = document.getElementByClass("btn-again");
-var again = document.getElementByClass("btn-next");
+var next = document.getElementByClass("btn-next");
 
     function checkPlayer(){
         // 130, 100 20 20
@@ -29,7 +29,7 @@ function printBtnAgain(){
 }
 
 function printBtnNext(){
-    again.style.display = block;
+    next.style.display = block;
 }
 
 function removeBtnAgain(){
@@ -37,5 +37,13 @@ function removeBtnAgain(){
 }
 
 function removeBtnNext(){
-    again.style.display = none;
+    next.style.display = none;
 }
+
+function checkWin() {
+    if (invaders.length == 0) {
+        gameOver = true;
+    }
+};
+
+

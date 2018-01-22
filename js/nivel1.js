@@ -202,12 +202,10 @@
     };
 
     function drawBoss() {
-        if (invadersBullets.length > 0) {
-            invadersBullets.forEach(function(bulletIcon) {
+    
                 context.drawImage(imageCache['boss'],400,10,300,300);
                 
-            });
-        }
+        
     };
 
     // ------------------------Move Elements
