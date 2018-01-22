@@ -194,13 +194,13 @@ var next = document.getElementsByClassName("btn-next");
                     {   
                         invaders.splice(i,1);
                         playerBullets.splice(j,1);
+                        getScore();
                         //context.drawImage(imageCache['test'],invaders[i].x,invaders[i].y,67,50);
                     }
 
                 }
             }
         }
-    }
     }
 
     function checkPlayer(){
