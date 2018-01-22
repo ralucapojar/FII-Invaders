@@ -1,4 +1,4 @@
-	
+
   var score;
   var name;
     //--------------------------Vlad
@@ -23,7 +23,10 @@ var next = document.getElementsByClassName("btn-next");
 
     //Initializare Boss
 
-    var boss = {};
+    var boss = [];
+    var newBoss = new Boss(400,10);
+    boss.push(newBoss); 
+    var bossBullets = [];
 
     // Initializare Player,Bullets
     
@@ -102,9 +105,14 @@ var next = document.getElementsByClassName("btn-next");
         printLife();
         printScore();
 
-        if(contor % 50 === 0)
+        if(invaders.length>0)
         {
-            if(invaders.length > 0) 
+            checkInvaders();
+        }
+
+        if(invaders.length>0)
+        {    
+            if(contor % 50 === 0)
             {
                 var random = Math.floor(Math.random() * invaders.length);
                 
@@ -120,23 +128,52 @@ var next = document.getElementsByClassName("btn-next");
                 };
             };
             
-        }; 
-        checkInvaders();
+        }
+        else
+            if(boss.length>0){
+                if(contor % 100 === 0)
+                {
+                   
+                        var newBullet = {
+                        x:boss[0].x,
+                        y:boss[0].y + 100,
+                        position:1
+                        }
+
+                    bossBullets.push(newBullet);
+
+                        var newBullet = {
+                        x:boss[0].x + 200,
+                        y:boss[0].y + 100,
+                        position:2
+                        }
+                
+                    bossBullets.push(newBullet);
+                    
+                };
+
+            } 
+        
         checkPlayer();
+        
         if(gameOver === false)
         {
             drawPlayer();
             drawBulletsPlayer();
             moveBulletsPlayer();
             if(invaders.length>0){
+
                 drawInvaders();
                 drawBulletsInvaders();
                 moveInvaders();
                 moveBulletsInvaders();
             }
             else
-            {
-                drawBoss();
+                if(boss.length>0){
+                    drawBoss();
+                    moveBoss();
+                    drawBulletsBoss();
+                    moveBulletsBoss()
             }
         }
         else
@@ -148,17 +185,18 @@ var next = document.getElementsByClassName("btn-next");
 
     function checkInvaders(){
         // 67,55 20 20
-        
-        for (var i = 0; i < invaders.length; i++) {
-            for(var j = 0; j < playerBullets.length; j++)
-            {
-                if( invaders.length > 0){
-                if((playerBullets[j].xBullet >= invaders[i].x && playerBullets[j].xBullet <= invaders[i].x + 67) && (playerBullets[j].yBullet >= invaders[i].y && playerBullets[j].yBullet <= invaders[i].y + 55))
-                {   
-                    invaders.splice(i,1);
-                    playerBullets.splice(j,1);
-                    getScore();
-                    //context.drawImage(imageCache['test'],invaders[i].x,invaders[i].y,67,50);
+
+        if(invaders.length>0){
+            for (var i = 0; i < invaders.length; i++) {
+                for(var j = 0; j < playerBullets.length; j++)
+                {
+                    if((playerBullets[j].xBullet >= invaders[i].x && playerBullets[j].xBullet <= invaders[i].x + 67) && (playerBullets[j].yBullet >= invaders[i].y && playerBullets[j].yBullet <= invaders[i].y + 55))
+                    {   
+                        invaders.splice(i,1);
+                        playerBullets.splice(j,1);
+                        //context.drawImage(imageCache['test'],invaders[i].x,invaders[i].y,67,50);
+                    }
+
                 }
             }
         }
@@ -169,17 +207,33 @@ var next = document.getElementsByClassName("btn-next");
         // 130, 100 20 20
         var life = player.getLife();
         var x = player.getPoz();
-        for(var j = 0; j < invadersBullets.length; j++)
-        {
-            if((invadersBullets[j].xBullet >= x && invadersBullets[j].xBullet <= x + 100) && (invadersBullets[j].yBullet >= 655 && invadersBullets[j].yBullet <= 700))
-            {   
-                invadersBullets.splice(j,1);
-                player.removeLife();
-                if ( life == 1) {
-                   gameOver = true;
-                }             
+        if(invaders.length>0){
+            for(var j = 0; j < invadersBullets.length; j++)
+            {
+                if((invadersBullets[j].xBullet >= x && invadersBullets[j].xBullet <= x + 100) && (invadersBullets[j].yBullet >= 655 && invadersBullets[j].yBullet <= 700))
+                {   
+                    invadersBullets.splice(j,1);
+                    player.removeLife();
+                    if ( life == 1) {
+                        gameOver = true;
+                    }             
+                }
             }
         }
+        else
+            if (boss.length>0) {
+                for(var j = 0; j < bossBullets.length; j++)
+                {
+                    if((bossBullets[j].x >= x && bossBullets[j].x <= x + 100) && (bossBullets[j].y >= 655 && bossBullets[j].y <= 700))
+                    {   
+                        bossBullets.splice(j,1);
+                        player.removeLife();
+                        if ( life == 1) {
+                            gameOver = true;
+                        }             
+                    }
+                }
+            }
     }
 
     // ---------------------Draw Elements
@@ -218,7 +272,20 @@ var next = document.getElementsByClassName("btn-next");
     };
 
     function drawBoss() {
-        context.drawImage(imageCache['boss'],400,10,300,300);
+        if (boss.length > 0) {
+            boss.forEach(function(bossIcon) {
+                bossIcon.draw();
+            });
+        }
+    };
+
+    function drawBulletsBoss() {
+        if (bossBullets.length > 0) {
+            bossBullets.forEach(function(bulletIcon) {
+                context.drawImage(imageCache['invadersBullets'],bulletIcon.x,bulletIcon.y,20,20);
+                
+            });
+        }
     };
 
     // ------------------------Move Elements
@@ -231,10 +298,25 @@ var next = document.getElementsByClassName("btn-next");
         }
     };
 
+    function moveBoss() {
+        if (boss.length > 0) {
+            boss.forEach(function(bossIcon) {
+                bossIcon.move();
+            });
+        }
+    };
+
+    function moveBulletsBoss() {
+        if (bossBullets.length > 0) {
+            bossBullets.forEach(function(bulletIcon) {
+                bulletIcon.y = bulletIcon.y + 3;
+            });
+        }
+    };
+
     function moveBulletsInvaders() {
         if (invadersBullets.length > 0) {
             invadersBullets.forEach(function(bulletIcon) {
-                bulletIcon.currentAmountBullet = 0;
                 bulletIcon.yBullet = bulletIcon.yBullet + 3;
             });
         }
@@ -294,6 +376,45 @@ var next = document.getElementsByClassName("btn-next");
 			}
 			
 		};
+
+    };
+
+    function Boss(startX, startY) {
+        
+        this.x = startX;
+        this.y = startY;
+        
+        this.draw = function() {
+           context.drawImage(imageCache['boss'],this.x,this.y,200,200);
+        };
+
+        this.currentStage = 0;
+        this.currentAmount = 0;
+        this.stage = [
+            {
+                x:2,
+                y:0,
+                amount:165// 660 daca crestem x impartim valoarea asta la x
+            },
+            {
+                x:-2,
+                y:0,
+                amount:330
+            }];
+
+        this.move = function(){
+            this.x += this.stage[this.currentStage].x;
+            this.y += this.stage[this.currentStage].y;
+            this.currentAmount++;
+            if(this.currentAmount>=this.stage[this.currentStage].amount){
+                if(this.stage[this.currentStage].amount === 165 && this.currentAmount === 165){
+                    this.stage[this.currentStage].amount = 330;
+                }
+                this.currentStage = (this.currentStage + 1)%2;
+                this.currentAmount = 0;
+            }
+            
+        };
 
     };
 
