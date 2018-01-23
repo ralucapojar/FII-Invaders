@@ -1,13 +1,17 @@
-var monsterTouch = 0 ;
-  var score;
-  var name;
+    var monsterTouch = 0 ;
+    var score;
+    var name;
+    
     //--------------------------Vlad
-var again = document.getElementsByClassName("btn-again");
-var next = document.getElementsByClassName("btn-next");
-	var canvas;
+    
+    var again = document.getElementsByClassName("btn-again");
+    var next = document.getElementsByClassName("btn-next");
+	
+    var canvas;
     var context;
     var imageCache = {};
     var gameOver = false;
+    var gameWin = false;
     //Initializare Invader
     var invaderType = {
         invader1: 1,
@@ -56,6 +60,7 @@ var next = document.getElementsByClassName("btn-next");
     loadImage('playerBullets', '../img/playerBullets.png');
     loadImage('test', '../img/bullet.png');
     loadImage('gameOver', '../img/gameOver.png');
+    loadImage('gameWin', '../img/gameWin.jpg');
     loadImage('boss', '../img/boss.png');
 
 
@@ -158,7 +163,7 @@ var next = document.getElementsByClassName("btn-next");
         
         checkPlayer();
         
-        if(gameOver === false)
+        if(gameOver === false && gameWin === false)
         {
             drawPlayer();
             drawBulletsPlayer();
@@ -179,7 +184,10 @@ var next = document.getElementsByClassName("btn-next");
             }
         }
         else
-            context.drawImage(imageCache['gameOver'],0,0,canvas.width,canvas.height);
+            if(gameWin)
+                context.drawImage(imageCache['gameWin'],0,0,canvas.width,canvas.height);
+            else
+                context.drawImage(imageCache['gameOver'],0,0,canvas.width,canvas.height);
         contor++;
 	};
 
@@ -198,12 +206,14 @@ var next = document.getElementsByClassName("btn-next");
                 }
                 if (monsterTouch > 10){
                     boss.splice(0,1);
+                    gameWin = true; 
                 }
 
             }
         }      
     }
 
+   
     function checkInvaders(){
         // 67,55 20 20
         if(invaders.length>0){
@@ -218,9 +228,7 @@ var next = document.getElementsByClassName("btn-next");
                         if(invaders.length == 0){
                             playerBullets = [];
                         };
-                        //context.drawImage(imageCache['test'],invaders[i].x,invaders[i].y,67,50);
                     }
-
                 }
             }
         }            
@@ -270,8 +278,11 @@ var next = document.getElementsByClassName("btn-next");
     function drawBulletsPlayer(){
         if (playerBullets.length > 0) {
             playerBullets.forEach(function(bulletIcon) {
-                context.drawImage(imageCache['playerBullets'],bulletIcon.xBullet,bulletIcon.yBullet,10,20);
-                
+                if(bulletIcon.yBullet>0)
+                    context.drawImage(imageCache['playerBullets'],bulletIcon.xBullet,bulletIcon.yBullet,10,20);
+                else 
+                    playerBullets.splice(bulletIcon,1);
+                    console.log(playerBullets.length);
             });
         }
     };
@@ -288,8 +299,10 @@ var next = document.getElementsByClassName("btn-next");
     function drawBulletsInvaders() {
         if (invadersBullets.length > 0) {
             invadersBullets.forEach(function(bulletIcon) {
-                context.drawImage(imageCache['invadersBullets'],bulletIcon.xBullet,bulletIcon.yBullet,20,20);
-                
+                if(bulletIcon.yBullet<800)
+                    context.drawImage(imageCache['invadersBullets'],bulletIcon.xBullet,bulletIcon.yBullet,20,20);
+                else
+                     invadersBullets.splice(bulletIcon,1);   
             });
         }
     };
@@ -306,8 +319,10 @@ var next = document.getElementsByClassName("btn-next");
     function drawBulletsBoss() {
         if (bossBullets.length > 0) {
             bossBullets.forEach(function(bulletIcon) {
-                context.drawImage(imageCache['invadersBullets'],bulletIcon.x,bulletIcon.y,20,20);
-                
+                if(bulletIcon.y<900)
+                    context.drawImage(imageCache['invadersBullets'],bulletIcon.x,bulletIcon.y,20,20);
+                else 
+                    bossBullets.splice(bulletIcon,1);
             });
         }
     };
@@ -463,7 +478,7 @@ var next = document.getElementsByClassName("btn-next");
         }
         if (keyCode == 32) {
             
-            if(contor % 2 === 0)
+            if(contor % 4 === 0)
             {
 
              var newBullet = {
@@ -520,8 +535,3 @@ function removeBtnNext(){
     next.style.display = none;
 }
 
-function checkWin() {
-    if (invaders.length == 0) {
-        gameOver = true;
-    }
-};

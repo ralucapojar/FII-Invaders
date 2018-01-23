@@ -1,13 +1,18 @@
-var score;
-var name;
-var monsterTouch = 0 ;
+    var monsterTouch = 0 ;
+    var score;
+    var name;
+
     //--------------------------Vlad
-var again = document.getElementsByClassName("btn-again");
-var next = document.getElementsByClassName("btn-next");
+    
+    var again = document.getElementsByClassName("btn-again");
+    var next = document.getElementsByClassName("btn-next");
+    
     var canvas;
     var context;
     var imageCache = {};
     var gameOver = false;
+    var gameWin = false;
+
     //Initializare Invader
     var invaderType = {
         invader1: 1,
@@ -23,8 +28,10 @@ var next = document.getElementsByClassName("btn-next");
 
     //Initializare Boss
 
-    var boss = {};
-
+    var boss = [];
+    var newBoss = new Boss(400,10);
+    boss.push(newBoss); 
+    var bossBullets = [];
     // Initializare Player,Bullets
     
     var keysDown = {};
@@ -51,8 +58,9 @@ var next = document.getElementsByClassName("btn-next");
     loadImage('student1', '../img/student_nivel2.png');
     loadImage('invadersBullets', '../img/bullet.png');
     loadImage('playerBullets', '../img/playerBullets.png');
-    loadImage('test', '../img/bullet.png');
     loadImage('gameOver', '../img/gameOver.png');
+    loadImage('boss', '../img/boss.png');
+    loadImage('gameWin', '../img/gameWin.jpg');
     loadImage('boss', '../img/boss.png');
 
 
@@ -91,12 +99,11 @@ var next = document.getElementsByClassName("btn-next");
         }       
 
         createInvaders();
-        setInterval(gameLoop, 15);
+        setInterval(gameLoop, 33);
 
     };
     
     function gameLoop() {
-
         context.fillStyle = 'black';
         context.fillRect(0, 0, canvas.width, canvas.height);
         printLife();
@@ -109,9 +116,9 @@ var next = document.getElementsByClassName("btn-next");
             checkBoss();
         }
 
-        if(contor % 50 === 0)
-        {
-            if(invaders.length > 0) 
+        if(invaders.length>0)
+        {    
+            if(contor % 40 === 0)
             {
                 var random = Math.floor(Math.random() * invaders.length);
                 
@@ -127,27 +134,79 @@ var next = document.getElementsByClassName("btn-next");
                 };
             };
             
-        }; 
-        checkInvaders();
+        }
+        else
+            if(boss.length>0){
+
+                if(contor % 100 === 0)
+                {
+                   
+                        var newBullet = {
+                        x:boss[0].x,
+                        y:boss[0].y + 100,
+                        position:1
+                        }
+
+                    bossBullets.push(newBullet);
+
+                        var newBullet = {
+                        x:boss[0].x + 200,
+                        y:boss[0].y + 100,
+                        position:1
+                        }
+                
+                    bossBullets.push(newBullet);
+
+                    if(contor % 200 === 0)
+                    {
+                        var newBullet = {
+                        x:boss[0].x + 50,
+                        y:boss[0].y + 210,
+                        position:2
+                        }
+
+                        bossBullets.push(newBullet);
+
+                        var newBullet = {
+                        x:boss[0].x + 150,
+                        y:boss[0].y + 210,
+                        position:3
+                        }
+                
+                        bossBullets.push(newBullet);
+                    }
+                    
+                };
+
+            } 
+        
         checkPlayer();
-        if(gameOver === false)
+        
+        if(gameOver === false && gameWin === false)
         {
             drawPlayer();
             drawBulletsPlayer();
             moveBulletsPlayer();
             if(invaders.length>0){
+
                 drawInvaders();
                 drawBulletsInvaders();
                 moveInvaders();
                 moveBulletsInvaders();
             }
             else
-            {
-                drawBoss();
+                if(boss.length>0){
+                    drawBoss();
+                    moveBoss();
+                    drawBulletsBoss();
+                    moveBulletsBoss()
             }
         }
         else
-            context.drawImage(imageCache['gameOver'],0,0,canvas.width,canvas.height);
+            if(gameWin)
+                context.drawImage(imageCache['gameWin'],0,0,canvas.width,canvas.height);
+            else
+                context.drawImage(imageCache['gameOver'],0,0,canvas.width,canvas.height);
         contor++;
     };
 
@@ -163,7 +222,7 @@ var next = document.getElementsByClassName("btn-next");
                     getScore();
                     //context.drawImage(imageCache['test'],invaders[i].x,invaders[i].y,67,50);
                 }
-                if (monsterTouch > 10){
+                if (monsterTouch > 20){
                     boss.splice(0,1);
                 }
 
@@ -183,8 +242,7 @@ var next = document.getElementsByClassName("btn-next");
                     getScore();
                     if(invaders.length == 0){
                             playerBullets = [];
-                    };
-                    //context.drawImage(imageCache['test'],invaders[i].x,invaders[i].y,67,50);
+                    }
                 }
             }
         }
@@ -194,17 +252,33 @@ var next = document.getElementsByClassName("btn-next");
         // 130, 100 20 20
         var life = player.getLife();
         var x = player.getPoz();
-        for(var j = 0; j < invadersBullets.length; j++)
-        {
-            if((invadersBullets[j].xBullet >= x && invadersBullets[j].xBullet <= x + 100) && (invadersBullets[j].yBullet >= 655 && invadersBullets[j].yBullet <= 700))
-            {   
-                invadersBullets.splice(j,1);
-                player.removeLife();
-                if ( life == 1) {
-                   gameOver = true;
-                }             
+        if(invaders.length>0){
+            for(var j = 0; j < invadersBullets.length; j++)
+            {
+                if((invadersBullets[j].xBullet >= x && invadersBullets[j].xBullet <= x + 100) && (invadersBullets[j].yBullet >= 655 && invadersBullets[j].yBullet <= 700))
+                {   
+                    invadersBullets.splice(j,1);
+                    player.removeLife();
+                    if ( life == 1) {
+                        gameOver = true;
+                    }             
+                }
             }
         }
+        else
+            if (boss.length>0) {
+                for(var j = 0; j < bossBullets.length; j++)
+                {
+                    if((bossBullets[j].x >= x && bossBullets[j].x <= x + 100) && (bossBullets[j].y >= 655 && bossBullets[j].y <= 700))
+                    {   
+                        bossBullets.splice(j,1);
+                        player.removeLife();
+                        if ( life == 1) {
+                            gameOver = true;
+                        }             
+                    }
+                }
+            }
     }
 
     // ---------------------Draw Elements
@@ -218,8 +292,11 @@ var next = document.getElementsByClassName("btn-next");
     function drawBulletsPlayer(){
         if (playerBullets.length > 0) {
             playerBullets.forEach(function(bulletIcon) {
-                context.drawImage(imageCache['playerBullets'],bulletIcon.xBullet,bulletIcon.yBullet,10,20);
-                
+                if(bulletIcon.yBullet>0)
+                    context.drawImage(imageCache['playerBullets'],bulletIcon.xBullet,bulletIcon.yBullet,10,20);
+                else 
+                    playerBullets.splice(bulletIcon,1);
+                    console.log(playerBullets.length);
             });
         }
     };
@@ -236,15 +313,34 @@ var next = document.getElementsByClassName("btn-next");
     function drawBulletsInvaders() {
         if (invadersBullets.length > 0) {
             invadersBullets.forEach(function(bulletIcon) {
-                context.drawImage(imageCache['invadersBullets'],bulletIcon.xBullet,bulletIcon.yBullet,20,20);
-                
+                if(bulletIcon.yBullet<800)
+                    context.drawImage(imageCache['invadersBullets'],bulletIcon.xBullet,bulletIcon.yBullet,20,20);
+                else
+                     invadersBullets.splice(bulletIcon,1);   
             });
         }
     };
 
     function drawBoss() {
-        context.drawImage(imageCache['boss'],400,10,300,300);
+
+        if (boss.length > 0) {
+            boss.forEach(function(bossIcon) {
+                bossIcon.draw();
+            });
+        }
     };
+
+    function drawBulletsBoss() {
+        if (bossBullets.length > 0) {
+            bossBullets.forEach(function(bulletIcon) {
+                if(bulletIcon.y<900)
+                    context.drawImage(imageCache['invadersBullets'],bulletIcon.x,bulletIcon.y,20,20);
+                else 
+                    bossBullets.splice(bulletIcon,1);
+            });
+        }
+    };
+
 
     // ------------------------Move Elements
 
@@ -255,6 +351,38 @@ var next = document.getElementsByClassName("btn-next");
             });
         }
     };
+
+    function moveBoss() {
+        if (boss.length > 0) {
+            boss.forEach(function(bossIcon) {
+                bossIcon.move();
+            });
+        }
+    };
+
+    function moveBulletsBoss() {
+        if (bossBullets.length > 0) {
+            bossBullets.forEach(function(bulletIcon) {
+                if(bulletIcon.position === 1)
+                {
+                    bulletIcon.y = bulletIcon.y + 3;
+                }
+                else 
+                    if(bulletIcon.position === 2){
+                        bulletIcon.y = bulletIcon.y + 3;
+                        bulletIcon.x = bulletIcon.x - 3;
+                    }
+                    else
+                        if(bulletIcon.position === 3){
+                            bulletIcon.y = bulletIcon.y + 3;
+                            bulletIcon.x = bulletIcon.x + 3;
+                        }
+
+
+            });
+        }
+    };
+
 
     function moveBulletsInvaders() {
         if (invadersBullets.length > 0) {
@@ -315,6 +443,45 @@ var next = document.getElementsByClassName("btn-next");
             this.currentAmount++;
             if(this.currentAmount>=this.stage[this.currentStage].amount){
                 this.currentStage = (this.currentStage + 1)%4;
+                this.currentAmount = 0;
+            }
+            
+        };
+
+    };
+
+    function Boss(startX, startY) {
+        
+        this.x = startX;
+        this.y = startY;
+        
+        this.draw = function() {
+           context.drawImage(imageCache['boss'],this.x,this.y,200,200);
+        };
+
+        this.currentStage = 0;
+        this.currentAmount = 0;
+        this.stage = [
+            {
+                x:2,
+                y:0,
+                amount:165// 660 daca crestem x impartim valoarea asta la x
+            },
+            {
+                x:-2,
+                y:0,
+                amount:330
+            }];
+
+        this.move = function(){
+            this.x += this.stage[this.currentStage].x;
+            this.y += this.stage[this.currentStage].y;
+            this.currentAmount++;
+            if(this.currentAmount>=this.stage[this.currentStage].amount){
+                if(this.stage[this.currentStage].amount === 165 && this.currentAmount === 165){
+                    this.stage[this.currentStage].amount = 330;
+                }
+                this.currentStage = (this.currentStage + 1)%2;
                 this.currentAmount = 0;
             }
             
@@ -400,8 +567,3 @@ function removeBtnNext(){
     next.style.display = none;
 }
 
-function checkWin() {
-    if (invaders.length == 0) {
-        gameOver = true;
-    }
-};
