@@ -137,6 +137,7 @@
         }
         else
             if(boss.length>0){
+
                 if(contor % 100 === 0)
                 {
                    
@@ -488,7 +489,7 @@
             {
 
              var newBullet = {
-                    xBullet:player.getPoz()+30,
+                    xBullet:player.getPoz() + 5,
                     yBullet:645,
                     amount:650
                 }
