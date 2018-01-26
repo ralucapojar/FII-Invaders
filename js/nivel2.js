@@ -61,7 +61,7 @@
     loadImage('gameOver', '../img/gameOver.png');
     loadImage('boss', '../img/boss2.png');
     loadImage('gameWin', '../img/gameWin.jpg');
-    loadImage('background', '../img/nive2.jpg');
+    loadImage('background', '../img/nivel2-canvas.jpg');
     loadImage('monsterLife1', '../img/bosslive1.png');
     loadImage('monsterLife2', '../img/bosslive2.png');
     loadImage('monsterLife3', '../img/bosslive3.png');
