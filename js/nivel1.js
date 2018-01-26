@@ -202,7 +202,6 @@
                     monsterTouch ++;
                     playerBullets.splice(j,1);
                     getScore();
-                    //context.drawImage(imageCache['test'],invaders[i].x,invaders[i].y,67,50);
                 }
                 if (monsterTouch > 10){
                     boss.splice(0,1);

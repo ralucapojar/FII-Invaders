@@ -29,7 +29,7 @@
     //Initializare Boss
 
     var boss = [];
-    var newBoss = new Boss(400,10);
+    var newBoss = new Boss(400,20);
     boss.push(newBoss); 
     var bossBullets = [];
     // Initializare Player,Bullets
@@ -143,16 +143,16 @@
                 {
                    
                         var newBullet = {
-                        x:boss[0].x,
-                        y:boss[0].y + 100,
+                        x:boss[0].x + 50,
+                        y:boss[0].y + 205,
                         position:1
                         }
 
                     bossBullets.push(newBullet);
 
                         var newBullet = {
-                        x:boss[0].x + 200,
-                        y:boss[0].y + 100,
+                        x:boss[0].x + 150,
+                        y:boss[0].y + 205,
                         position:1
                         }
                 
@@ -161,16 +161,16 @@
                     if(contor % 200 === 0)
                     {
                         var newBullet = {
-                        x:boss[0].x + 50,
-                        y:boss[0].y + 210,
+                        x:boss[0].x,
+                        y:boss[0].y + 105,
                         position:2
                         }
 
                         bossBullets.push(newBullet);
 
                         var newBullet = {
-                        x:boss[0].x + 150,
-                        y:boss[0].y + 210,
+                        x:boss[0].x + 200,
+                        y:boss[0].y + 105,
                         position:3
                         }
                 
@@ -221,8 +221,7 @@
                 {   
                     monsterTouch ++;
                     playerBullets.splice(j,1);
-                    getScore();
-                    //context.drawImage(imageCache['test'],invaders[i].x,invaders[i].y,67,50);
+                    getScore(); 
                 }
                 if (monsterTouch > 15){
                     boss.splice(0,1);
@@ -258,11 +257,18 @@
         if(invaders.length>0){
             for(var j = 0; j < invadersBullets.length; j++)
             {
-                if((invadersBullets[j].xBullet >= x && invadersBullets[j].xBullet <= x + 100) && (invadersBullets[j].yBullet >= 655 && invadersBullets[j].yBullet <= 700))
+                if((invadersBullets[j].xBullet >= x-10 && invadersBullets[j].xBullet <= x + 50) && (invadersBullets[j].yBullet >= 655 && invadersBullets[j].yBullet <= 800))
                 {   
                     invadersBullets.splice(j,1);
                     player.removeLife();
                     if ( life == 1) {
+                        gameOver = true;
+                    }             
+                }
+            }
+            if(invaders[invaders.length-1].y>500){
+                for(var j = 0; j < invaders.length; j++){
+                    if(invaders[j].y >= 625){
                         gameOver = true;
                     }             
                 }
@@ -272,7 +278,7 @@
             if (boss.length>0) {
                 for(var j = 0; j < bossBullets.length; j++)
                 {
-                    if((bossBullets[j].x >= x && bossBullets[j].x <= x + 100) && (bossBullets[j].y >= 655 && bossBullets[j].y <= 700))
+                    if((bossBullets[j].x >= x-10 && bossBullets[j].x <= x + 50) && (bossBullets[j].y >= 655 && bossBullets[j].y <= 800))
                     {   
                         bossBullets.splice(j,1);
                         player.removeLife();
@@ -467,12 +473,12 @@
             {
                 x:2,
                 y:0,
-                amount:165// 660 daca crestem x impartim valoarea asta la x
+                amount:195// 660 daca crestem x impartim valoarea asta la x
             },
             {
                 x:-2,
                 y:0,
-                amount:330
+                amount:380
             }];
 
         this.move = function(){
@@ -480,8 +486,8 @@
             this.y += this.stage[this.currentStage].y;
             this.currentAmount++;
             if(this.currentAmount>=this.stage[this.currentStage].amount){
-                if(this.stage[this.currentStage].amount === 165 && this.currentAmount === 165){
-                    this.stage[this.currentStage].amount = 330;
+                if(this.stage[this.currentStage].amount === 195 && this.currentAmount === 195){
+                    this.stage[this.currentStage].amount = 380;
                 }
                 this.currentStage = (this.currentStage + 1)%2;
                 this.currentAmount = 0;
@@ -516,7 +522,7 @@
             {
 
              var newBullet = {
-                    xBullet:player.getPoz()+30,
+                    xBullet:player.getPoz() + 5,
                     yBullet:645,
                     amount:650
                 }
