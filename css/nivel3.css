@@ -107,38 +107,48 @@ body {
 
 }
 
-
 #noLife{
     height: 50px;
-    width: 150px;
+    width: 200px;
     position: absolute;
-    margin-left: 36%;
+    margin-left: 30%;
     margin-right: 10%;
     margin-top: 1%;
-    color: black;
+    color: darkred;
     font-weight: bold;
     text-align: -webkit-center;
-    background-color: #96b3ce;
+    background-color: lightgoldenrodyellow;
     border-style: ridge;
-    border-color: #197bd6;
+    border-color: red;
 }
 #score{
     height: 50px;
-    width: 150px;
+    width: 200px;
     position: absolute;
-    margin-left: 60%;
+    margin-left: 50%;
     margin-top: 1%;;
-    color: black;
+    color: darkred;
     font-weight: bold;
     text-align: -webkit-center;
-    background-color: #96b3ce;
+    background-color: lightgoldenrodyellow;
     border-style: ridge;
-    border-color: #197bd6;
+    border-color: red;
+}
+
+#monsterLife{
+    display: none;
+    height: 90px;
+    width: 200px;
+    position: absolute;
+    margin-left: 70%;
+    margin-top: -1%;
+    font-weight: bold;
 }
 
 .btn-again, .btn-next{
+  text-decoration:none;
   display: none;
-   height: 50px;
+  height: 50px;
   width: 150px;
   margin: 0px;
   color: darkred;

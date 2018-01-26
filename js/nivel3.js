@@ -4,8 +4,8 @@
 
     //--------------------------Vlad
     
-    var again = document.getElementsByClassName("btn-again");
-    var next = document.getElementsByClassName("btn-next");
+    var again = document.getElementsByClassName("btn-again")[0];
+    var next = document.getElementsByClassName("btn-next")[0];
     
     var canvas;
     var context;
@@ -62,6 +62,12 @@
     loadImage('boss', '../img/boss.png');
     loadImage('gameWin', '../img/gameWin.jpg');
     loadImage('boss', '../img/boss.png');
+    loadImage('monsterLife1', '../img/bosslive1.png');
+    loadImage('monsterLife2', '../img/bosslive2.png');
+    loadImage('monsterLife3', '../img/bosslive3.png');
+    loadImage('monsterLife4', '../img/bosslive4.png');
+    loadImage('monsterLife5', '../img/bosslive5.png');
+
 
 
     function createInvaders(){
@@ -222,9 +228,6 @@
                     getScore();
                     //context.drawImage(imageCache['test'],invaders[i].x,invaders[i].y,67,50);
                 }
-                if (monsterTouch > 20){
-                    boss.splice(0,1);
-                }
 
             }
         }      
@@ -326,6 +329,29 @@
         if (boss.length > 0) {
             boss.forEach(function(bossIcon) {
                 bossIcon.draw();
+                if (monsterTouch == 0 ) {
+                   printMonsterLife(imageCache['monsterLife1']);
+                }
+                else if (monsterTouch > 0 && monsterTouch <= 4) {
+                   printMonsterLife(imageCache['monsterLife2']);
+                }
+                else if (monsterTouch > 4 && monsterTouch <= 8) {
+                   printMonsterLife(imageCache['monsterLife3']);
+                }
+                else if (monsterTouch > 8 && monsterTouch <= 15) {
+                   printMonsterLife(imageCache['monsterLife4']);
+                }
+                else if (monsterTouch > 15 && monsterTouch <= 18) {
+                   printMonsterLife(imageCache['monsterLife5']);
+                }
+                else if (monsterTouch > 20) {
+                    scoreMonster();
+                    boss.splice(0,1);
+                    gameWin = true; 
+                    printBtnAgain();
+                    printBtnNext();
+                    hideMonsterLife();
+                }
             });
         }
     };
@@ -495,7 +521,8 @@
                 this.currentAmount = 0;
             }
             
-    };
+       };
+    }   
 
     function removeBullet(bullet) {
         var pos = bullets.indexOf(bullet);
@@ -533,45 +560,64 @@
     };
 
 
+function scoreMonster(){
+    score = parseInt(localStorage.getItem(name));
+    score += 600;
+    localStorage.setItem(name, score);
+}
+
 function getScore(){
     score = parseInt(localStorage.getItem(name));
-    if (score  < 50 ){
-        score +=10;
+    if (invaders.length > 0 && invaders.length < 6 ){
+        score += 40;
     }
-    if (score >= 50){
-        score +=20;
+    else if (invaders.length >= 6 && invaders.length < 12){
+        score += 70;
     }
-    if (score >= 80){
-        score +=30;
+    else if (invaders.length >= 12 && invaders.length < 24){
+        score += 80;
+    }
+    else if (invaders.length >= 24){
+        score += 100;
     }
 
     localStorage.setItem(name, score);
 }
 
+function hideMonsterLife(){
+    var img = document.getElementById("monsterLife");
+    img.style.display = "none";   
+}
+
+function printMonsterLife(path){ 
+    var img = document.getElementById("monsterLife");
+    img.src = path.src;
+    img.style.display = "block";                 
+}
+
 function printScore(){ 
     score = parseInt(localStorage.getItem(name)); 
-    var text = " Score: " + score;          // Create a <li> node   
-    document.getElementById("score").innerHTML = text;                         // Append the text to <li> 
+    var text = " Score: " + score;         
+    document.getElementById("score").innerHTML = text;                       
 }
 
 function printLife(){  
-    var text = " Life: " + player.getLife() + " *";          // Create a <li> node   
-    document.getElementById("noLife").innerHTML = text;                         // Append the text to <li> 
+    var text = " Life: " + player.getLife() + " *";        
+    document.getElementById("noLife").innerHTML = text;                         
 }
 
-function printBtnAgain(){
-    again.style.display = block;
+function printBtnAgain() {
+    again.style.display = "block";   
 }
 
-function printBtnNext(){
-    next.style.display = block;
+function printBtnNext() {
+    next.style.display = "block";   
 }
 
-function removeBtnAgain(){
-    again.style.display = none;
+function removeBtnAgain() {
+    again.style.display = "none";
 }
 
-function removeBtnNext(){
-    next.style.display = none;
+function removeBtnNext() {
+    next.style.display = "none";
 }
-

@@ -4,8 +4,8 @@
 
     //--------------------------Vlad
     
-    var again = document.getElementsByClassName("btn-again");
-    var next = document.getElementsByClassName("btn-next");
+    var again = document.getElementsByClassName("btn-again")[0];
+    var next = document.getElementsByClassName("btn-next")[0];
     
     var canvas;
     var context;
@@ -62,6 +62,12 @@
     loadImage('boss', '../img/boss2.png');
     loadImage('gameWin', '../img/gameWin.jpg');
     loadImage('background', '../img/nive2.jpg');
+    loadImage('monsterLife1', '../img/bosslive1.png');
+    loadImage('monsterLife2', '../img/bosslive2.png');
+    loadImage('monsterLife3', '../img/bosslive3.png');
+    loadImage('monsterLife4', '../img/bosslive4.png');
+    loadImage('monsterLife5', '../img/bosslive5.png');
+
 
 
     function createInvaders(){
@@ -201,7 +207,7 @@
                     moveBoss();
                     drawBulletsBoss();
                     moveBulletsBoss()
-            }
+                }
         }
         else
             if(gameWin)
@@ -223,11 +229,6 @@
                     playerBullets.splice(j,1);
                     getScore(); 
                 }
-                if (monsterTouch > 15){
-                    boss.splice(0,1);
-                    gameWin = true;
-                }
-
             }
         }      
     }
@@ -335,6 +336,29 @@
         if (boss.length > 0) {
             boss.forEach(function(bossIcon) {
                 bossIcon.draw();
+                if (monsterTouch == 0 ) {
+                   printMonsterLife(imageCache['monsterLife1']);
+                }
+                else if (monsterTouch > 0 && monsterTouch <= 3) {
+                   printMonsterLife(imageCache['monsterLife2']);
+                }
+                else if (monsterTouch > 3 && monsterTouch <= 6) {
+                   printMonsterLife(imageCache['monsterLife3']);
+                }
+                else if (monsterTouch > 6 && monsterTouch <= 10) {
+                   printMonsterLife(imageCache['monsterLife4']);
+                }
+                else if (monsterTouch > 10 && monsterTouch <= 13) {
+                   printMonsterLife(imageCache['monsterLife5']);
+                }
+                else if (monsterTouch > 15) {
+                    scoreMonster();
+                    boss.splice(0,1);
+                    gameWin = true; 
+                    printBtnAgain();
+                    printBtnNext();
+                    hideMonsterLife();
+                }
             });
         }
     };
@@ -542,21 +566,40 @@
         }  
     };
 
-    function getScore(){
+function scoreMonster(){
     score = parseInt(localStorage.getItem(name));
-    if (score  < 50 ){
-        score +=10;
+    score += 500;
+    localStorage.setItem(name, score);
+}
+
+function getScore(){
+    score = parseInt(localStorage.getItem(name));
+    if (invaders.length > 0 && invaders.length < 6 ){
+        score += 20;
     }
-    if (score >= 50){
-        score +=20;
+    else if (invaders.length >= 6 && invaders.length < 12){
+        score += 30;
     }
-    if (score >= 80){
-        score +=30;
+    else if (invaders.length >= 12 && invaders.length < 24){
+        score += 40;
+    }
+    else if (invaders.length >= 24){
+        score += 70;
     }
 
     localStorage.setItem(name, score);
 }
 
+function hideMonsterLife(){
+    var img = document.getElementById("monsterLife");
+    img.style.display = "none";   
+}
+
+function printMonsterLife(path){ 
+    var img = document.getElementById("monsterLife");
+    img.src = path.src;
+    img.style.display = "block";                 
+}
 
 function printLife(){  
     var text = " Life: " + player.getLife() + " *";          // Create a <li> node   
@@ -570,18 +613,17 @@ function printScore(){
 }
 
 function printBtnAgain(){
-    again.style.display = block;
+    again.style.display = "block";   
 }
 
 function printBtnNext(){
-    next.style.display = block;
+    next.style.display = "block";   
 }
 
 function removeBtnAgain(){
-    again.style.display = none;
+    again.style.display = "none";
 }
 
 function removeBtnNext(){
-    next.style.display = none;
+    next.style.display = "none";
 }
-
