@@ -142,6 +142,7 @@
         }
         else
             if(boss.length>0){
+
                 if(contor % 100 === 0)
                 {
                    
@@ -206,7 +207,6 @@
                     monsterTouch ++;
                     playerBullets.splice(j,1);
                     getScore();
-                    //context.drawImage(imageCache['test'],invaders[i].x,invaders[i].y,67,50);
                 }
 
             }
@@ -509,7 +509,7 @@
             {
 
              var newBullet = {
-                    xBullet:player.getPoz()+30,
+                    xBullet:player.getPoz() + 5,
                     yBullet:645,
                     amount:650
                 }
