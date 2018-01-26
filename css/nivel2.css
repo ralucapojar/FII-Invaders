@@ -4,8 +4,8 @@ body {
 	min-width: 1024px;
 	width: 100%;
 	height: auto;
-  
-	background-color: #324554;
+  background-image: url(../img/n2.png);
+	/*background-color: #324554;*/
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	background-position: center center;
@@ -61,55 +61,15 @@ body {
 .side{
  opacity: 0.9;
 }
-.box-game{
-  border-style: ridge;
-  border-color:#378fa3;
-  position: absolute;
-  top: 22%;
-  left: 23%;
-  width: 1000px;
-  height: 800px;
-  
-  background-image: url(../img/nivel_2.jpg);
-  background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../img/nivel_2.jpg);
-  background-repeat: no-repeat;
-  background-size: 80% 80%;
-  background-attachment: fixed;
-  background-position-x: center;
-  background-position-y: bottom;
-}
-
-.game{
-  width: 1000px;
-  height: 600px;
-}
-.monster{
-  height: 25%;
-  padding-top: 10px;
-}
-.bullets{
-  height: 55%;
-}
-
-.monster-row{
-   margin: 0px 60px; 
-}
-
- .bullet-row, .student-row{
-  margin-left: 400px; 
-}
-.student-row{
-  margin-left: 550px; 
-}
 
 #info{
   color: lightgoldenrodyellow;
   font-weight: bold;
   text-align: -webkit-center;
-
+  background-color: #687f91;
 }
 
-
+/*
 @media screen and (min-width: 600px) {
   .box-game {
     left:20%;
@@ -155,11 +115,11 @@ body {
     background-size: 80% 85%;
   }
 
-}
+}*/
 
 #canvas{
   border-style: ridge;
-  border-color:red;
+  border-color: #00008B;
   position: absolute;
   top: 23%;
   left: 32%;
@@ -176,12 +136,12 @@ body {
     margin-left: 36%;
     margin-right: 10%;
     margin-top: 1%;
-    color: darkred;
+    color: lightgoldenrodyellow;
     font-weight: bold;
     text-align: -webkit-center;
     background-color: #687f91;
     border-style: ridge;
-    border-color: red;
+    border-color:   #00008B;
 }
 #score{
     height: 50px;
@@ -189,12 +149,12 @@ body {
     position: absolute;
     margin-left: 60%;
     margin-top: 1%;;
-    color: darkred;
+    color: lightgoldenrodyellow;
     font-weight: bold;
     text-align: -webkit-center;
     background-color: #687f91;
     border-style: ridge;
-    border-color: red;
+    border-color:   #00008B;
 }
 
 .btn-again, .btn-next{

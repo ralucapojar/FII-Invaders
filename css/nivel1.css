@@ -57,50 +57,13 @@ body {
  opacity: 0.9;
 }
 
-.box-game{
-  border-style: ridge;
-  border-color:red;
-  position: absolute;
-  top: 22%;
-  left: 23%;
-  width: 1000px;
-  height: 600px;
-  background-color: black;
-}
-
-.game{
-  width: 1000px;
-  height: 600px;
-}
-.monster{
-  height: 25%;
-  padding-top: 10px;
-}
-.bullets{
-  height: 55%;
-}
-.student{
-  height: 10%;
-}
-
-.monster-row{
-   margin: 0px 60px; 
-}
-
- .bullet-row, .student-row{
-  margin-left: 400px; 
-}
-.student-row{
-  margin-left: 550px; 
-}
-
 #info{
   color: lightgoldenrodyellow;
   font-weight: bold;
   text-align: -webkit-center;
   background-color: darkred;
 }
-
+/*
 @media screen and (min-width: 600px) {
   .box-game {
     left:20%;
@@ -124,7 +87,7 @@ body {
   .box-game {
   	left:10%;
   }
-}
+}*/
 
 #canvas{
   border-style: ridge;
