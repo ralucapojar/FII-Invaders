@@ -28,7 +28,7 @@
     //Initializare Boss
 
     var boss = [];
-    var newBoss = new Boss(400,10);
+    var newBoss = new Boss(400,20);
     boss.push(newBoss); 
     var bossBullets = [];
 
@@ -58,10 +58,9 @@
     loadImage('student1', '../img/student1.png');
     loadImage('invadersBullets', '../img/bullet.png');
     loadImage('playerBullets', '../img/playerBullets.png');
-    loadImage('test', '../img/bullet.png');
     loadImage('gameOver', '../img/gameOver.png');
     loadImage('gameWin', '../img/gameWin.jpg');
-    loadImage('boss', '../img/boss.png');
+    loadImage('boss', '../img/boss1.png');
 
 
     function createInvaders(){
@@ -142,16 +141,16 @@
                 {
                    
                         var newBullet = {
-                        x:boss[0].x,
-                        y:boss[0].y + 100,
+                        x:boss[0].x + 10,
+                        y:boss[0].y + 130,
                         position:1
                         }
 
                     bossBullets.push(newBullet);
 
                         var newBullet = {
-                        x:boss[0].x + 200,
-                        y:boss[0].y + 100,
+                        x:boss[0].x + 180,
+                        y:boss[0].y + 130,
                         position:2
                         }
                 
@@ -433,12 +432,12 @@
             {
                 x:2,
                 y:0,
-                amount:165// 660 daca crestem x impartim valoarea asta la x
+                amount:195// 660 daca crestem x impartim valoarea asta la x
             },
             {
                 x:-2,
                 y:0,
-                amount:330
+                amount:380
             }];
 
         this.move = function(){
@@ -446,8 +445,8 @@
             this.y += this.stage[this.currentStage].y;
             this.currentAmount++;
             if(this.currentAmount>=this.stage[this.currentStage].amount){
-                if(this.stage[this.currentStage].amount === 165 && this.currentAmount === 165){
-                    this.stage[this.currentStage].amount = 330;
+                if(this.stage[this.currentStage].amount === 195 && this.currentAmount === 195){
+                    this.stage[this.currentStage].amount = 380;
                 }
                 this.currentStage = (this.currentStage + 1)%2;
                 this.currentAmount = 0;
