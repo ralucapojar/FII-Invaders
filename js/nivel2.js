@@ -59,7 +59,7 @@
     loadImage('invadersBullets', '../img/bullet.png');
     loadImage('playerBullets', '../img/playerBullets.png');
     loadImage('gameOver', '../img/gameOver.png');
-    loadImage('boss', '../img/boss.png');
+    loadImage('boss', '../img/boss2.png');
     loadImage('gameWin', '../img/gameWin.jpg');
     loadImage('background', '../img/nive2.jpg');
 
