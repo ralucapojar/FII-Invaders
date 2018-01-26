@@ -17,9 +17,9 @@ var Player;
 				playerObj = {
 					life: 3,
 					img: 'student1',
-					speedX: 30, // movement in pixels per second
-					startPosition: 450, 
-					x: 100,
+					speedX: 20, // movement in pixels per second
+					startPosition: 460, 
+					x: 50,
 					y: 100,
 					bullets:[]
 				}
@@ -42,10 +42,10 @@ var Player;
 				return playerObj.startPosition;
 			},
 			moveLeft : function() {
-				(playerObj.startPosition - playerObj.speedX > -30) ? playerObj.startPosition -= playerObj.speedX :  playerObj.startPosition      
+				(playerObj.startPosition - playerObj.speedX > 10) ? playerObj.startPosition -= playerObj.speedX :  playerObj.startPosition      
 			},
 			moveRight : function() {
-				(playerObj.startPosition + playerObj.speedX < 910) ? playerObj.startPosition += playerObj.speedX :  playerObj.startPosition            
+				(playerObj.startPosition + playerObj.speedX < 970) ? playerObj.startPosition += playerObj.speedX :  playerObj.startPosition            
 			},
 			drawPlayer : function(poz) {
 				context.drawImage( imageCache[playerObj.img], poz, 655, playerObj.x, playerObj.y);     

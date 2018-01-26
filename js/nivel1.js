@@ -240,11 +240,18 @@
         if(invaders.length>0){
             for(var j = 0; j < invadersBullets.length; j++)
             {
-                if((invadersBullets[j].xBullet >= x && invadersBullets[j].xBullet <= x + 100) && (invadersBullets[j].yBullet >= 655 && invadersBullets[j].yBullet <= 700))
+                if((invadersBullets[j].xBullet >= x-10 && invadersBullets[j].xBullet <= x + 50) && (invadersBullets[j].yBullet >= 655 && invadersBullets[j].yBullet <= 800))
                 {   
                     invadersBullets.splice(j,1);
                     player.removeLife();
                     if ( life == 1) {
+                        gameOver = true;
+                    }             
+                }
+            }
+            if(invaders[invaders.length-1].y>500){
+                for(var j = 0; j < invaders.length; j++){
+                    if(invaders[j].y >= 625){
                         gameOver = true;
                     }             
                 }
@@ -254,7 +261,7 @@
             if (boss.length>0) {
                 for(var j = 0; j < bossBullets.length; j++)
                 {
-                    if((bossBullets[j].x >= x && bossBullets[j].x <= x + 100) && (bossBullets[j].y >= 655 && bossBullets[j].y <= 700))
+                    if((bossBullets[j].x >= x-10 && bossBullets[j].x <= x + 50) && (bossBullets[j].y >= 655 && bossBullets[j].y <= 800))
                     {   
                         bossBullets.splice(j,1);
                         player.removeLife();
