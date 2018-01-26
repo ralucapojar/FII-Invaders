@@ -31,7 +31,7 @@
     var newBoss = new Boss(400,20);
     boss.push(newBoss); 
     var bossBullets = [];
-
+ 
     // Initializare Player,Bullets
     
     var keysDown = {};
@@ -61,6 +61,11 @@
     loadImage('gameOver', '../img/gameOver.png');
     loadImage('gameWin', '../img/gameWin.jpg');
     loadImage('boss', '../img/boss1.png');
+    loadImage('monsterLife1', '../img/bosslive1.png');
+    loadImage('monsterLife2', '../img/bosslive2.png');
+    loadImage('monsterLife3', '../img/bosslive3.png');
+    loadImage('monsterLife4', '../img/bosslive4.png');
+    loadImage('monsterLife5', '../img/bosslive5.png');
 
 
     function createInvaders(){
@@ -203,10 +208,6 @@
                     getScore();
                     //context.drawImage(imageCache['test'],invaders[i].x,invaders[i].y,67,50);
                 }
-                if (monsterTouch > 10){
-                    boss.splice(0,1);
-                    gameWin = true; 
-                }
 
             }
         }      
@@ -318,6 +319,26 @@
         if (boss.length > 0) {
             boss.forEach(function(bossIcon) {
                 bossIcon.draw();
+            
+                if (monsterTouch == 0 ) {
+                   printMonsterLife(imageCache['monsterLife1']);
+                }
+                else if (monsterTouch > 0 && monsterTouch <= 2) {
+                   printMonsterLife(imageCache['monsterLife2']);
+                }
+                else if (monsterTouch > 2 && monsterTouch <= 4) {
+                   printMonsterLife(imageCache['monsterLife3']);
+                }
+                else if (monsterTouch > 4 && monsterTouch <= 6) {
+                   printMonsterLife(imageCache['monsterLife4']);
+                }
+                else if (monsterTouch > 6 && monsterTouch <= 8) {
+                   printMonsterLife(imageCache['monsterLife5']);
+                }
+                else if (monsterTouch > 10) {
+                    boss.splice(0,1);
+                    gameWin = true; 
+                }
             });
         }
     };
@@ -514,29 +535,35 @@ function getScore(){
     localStorage.setItem(name, score);
 }
 
+function printMonsterLife(path){ 
+    var img = document.getElementById("monsterLife");
+    img.src = path.src;
+    img.style.display = "block";                 
+}
+
 function printScore(){ 
     score = parseInt(localStorage.getItem(name)); 
-    var text = " Score: " + score;          // Create a <li> node   
-    document.getElementById("score").innerHTML = text;                         // Append the text to <li> 
+    var text = " Score: " + score;         
+    document.getElementById("score").innerHTML = text;                          
 }
 
 function printLife(){  
-    var text = " Life: " + player.getLife() + " *";          // Create a <li> node   
-    document.getElementById("noLife").innerHTML = text;                         // Append the text to <li> 
+    var text = " Life: " + player.getLife() + " *"; 
+    document.getElementById("noLife").innerHTML = text;                        
 }
 
 function printBtnAgain(){
-    again.style.display = block;
+    again.style.display = "block";   
 }
 
 function printBtnNext(){
-    next.style.display = block;
+    next.style.display ="block";   
 }
 
 function removeBtnAgain(){
-    again.style.display = none;
+    again.style.display = "none";
 }
 
 function removeBtnNext(){
-    next.style.display = none;
+    next.style.display = "none";
 }
