@@ -30,7 +30,7 @@ body {
 
 /* Modal Content */
 .modal-content {
-    background-color: #e72b1d;
+    background-color: #8cb3d9;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
@@ -133,9 +133,9 @@ body {
 
 #canvas{
   border-style: ridge;
-  border-color:red;
+  border-color:#3d89d3;
   position: absolute;
-  top: 13%;
+  top: 23%;
   left: 32%;
   width: 700px;
   height: 500px;
@@ -143,15 +143,33 @@ body {
 
 }
 
-.life, #noLife, #score{
+
+#noLife{
     height: 50px;
     width: 150px;
-    margin: 0px;
-    margin-left: 15%;
-    color: darkred;
+    position: absolute;
+    margin-left: 36%;
+    margin-right: 10%;
+    margin-top: 1%;
+    color: black;
     font-weight: bold;
     text-align: -webkit-center;
-    background-color: lightgoldenrodyellow;
+    background-color: #96b3ce;
+    border-style: ridge;
+    border-color: #197bd6;
+}
+#score{
+    height: 50px;
+    width: 150px;
+    position: absolute;
+    margin-left: 60%;
+    margin-top: 1%;;
+    color: black;
+    font-weight: bold;
+    text-align: -webkit-center;
+    background-color: #96b3ce;
+    border-style: ridge;
+    border-color: #197bd6;
 }
 
 .btn-again, .btn-next{
