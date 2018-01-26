@@ -59,9 +59,8 @@
     loadImage('invadersBullets', '../img/bullet.png');
     loadImage('playerBullets', '../img/playerBullets.png');
     loadImage('gameOver', '../img/gameOver.png');
-    loadImage('boss', '../img/boss.png');
+    loadImage('boss', '../img/boss3.png');
     loadImage('gameWin', '../img/gameWin.jpg');
-    loadImage('boss', '../img/boss.png');
     loadImage('monsterLife1', '../img/bosslive1.png');
     loadImage('monsterLife2', '../img/bosslive2.png');
     loadImage('monsterLife3', '../img/bosslive3.png');
@@ -74,16 +73,16 @@
 
         var startInvaderRow=6;
         var typeOfInvader = invaderType.invader1;
-        for (var i = 0; i < 4; i++) {
+        for (var i = 0; i < 6; i++) {
             var startInvaderColumn =20;
             var typeOfInvader = invaderType.invader1;
-            if (i === 1 || i === 2) {
+            if (i === 2 || i === 3) {
                 typeOfInvader = invaderType.invader2;
             }
-            if (i > 2) {
+            if (i > 3) {
                 typeOfInvader = invaderType.invader3;
             }
-            for(var j = 0; j < 5; j++){
+            for(var j = 0; j < 8; j++){
                 var newInvader = new invader(typeOfInvader, startInvaderColumn, startInvaderRow);
                 invaders.push(newInvader);
                 startInvaderColumn = startInvaderColumn + 50;
@@ -124,7 +123,7 @@
 
         if(invaders.length>0)
         {    
-            if(contor % 40 === 0)
+            if(contor % 30 === 0)
             {
                 var random = Math.floor(Math.random() * invaders.length);
                 
@@ -148,16 +147,16 @@
                 {
                    
                         var newBullet = {
-                        x:boss[0].x,
-                        y:boss[0].y + 100,
+                        x:boss[0].x + 50,
+                        y:boss[0].y + 205,
                         position:1
                         }
 
                     bossBullets.push(newBullet);
 
                         var newBullet = {
-                        x:boss[0].x + 200,
-                        y:boss[0].y + 100,
+                        x:boss[0].x + 150,
+                        y:boss[0].y + 205,
                         position:1
                         }
                 
@@ -166,16 +165,16 @@
                     if(contor % 200 === 0)
                     {
                         var newBullet = {
-                        x:boss[0].x + 50,
-                        y:boss[0].y + 210,
+                        x:boss[0].x,
+                        y:boss[0].y + 105,
                         position:2
                         }
 
                         bossBullets.push(newBullet);
 
                         var newBullet = {
-                        x:boss[0].x + 150,
-                        y:boss[0].y + 210,
+                        x:boss[0].x + 200,
+                        y:boss[0].y + 105,
                         position:3
                         }
                 
@@ -217,6 +216,7 @@
     };
 
     document.addEventListener("keydown", keyDownTextField, false);
+
  function checkBoss(){
         if(boss.length>0){
             for(var j = 0; j < playerBullets.length; j++)
@@ -226,7 +226,6 @@
                     monsterTouch ++;
                     playerBullets.splice(j,1);
                     getScore();
-                    //context.drawImage(imageCache['test'],invaders[i].x,invaders[i].y,67,50);
                 }
 
             }
@@ -234,7 +233,7 @@
     }
 
     function checkInvaders(){
-        // 67,55 20 20
+       
         for (var i = 0; i < invaders.length; i++) {
             for(var j = 0; j < playerBullets.length; j++)
             {
@@ -252,17 +251,24 @@
     }
 
     function checkPlayer(){
-        // 130, 100 20 20
+        
         var life = player.getLife();
         var x = player.getPoz();
         if(invaders.length>0){
             for(var j = 0; j < invadersBullets.length; j++)
             {
-                if((invadersBullets[j].xBullet >= x && invadersBullets[j].xBullet <= x + 100) && (invadersBullets[j].yBullet >= 655 && invadersBullets[j].yBullet <= 700))
+                if((invadersBullets[j].xBullet >= x-10 && invadersBullets[j].xBullet <= x + 50) && (invadersBullets[j].yBullet >= 655 && invadersBullets[j].yBullet <= 800))
                 {   
                     invadersBullets.splice(j,1);
                     player.removeLife();
                     if ( life == 1) {
+                        gameOver = true;
+                    }             
+                }
+            }
+            if(invaders[invaders.length-1].y>500){
+                for(var j = 0; j < invaders.length; j++){
+                    if(invaders[j].y >= 625){
                         gameOver = true;
                     }             
                 }
@@ -272,7 +278,7 @@
             if (boss.length>0) {
                 for(var j = 0; j < bossBullets.length; j++)
                 {
-                    if((bossBullets[j].x >= x && bossBullets[j].x <= x + 100) && (bossBullets[j].y >= 655 && bossBullets[j].y <= 700))
+                    if((bossBullets[j].x >= x-10 && bossBullets[j].x <= x + 50) && (bossBullets[j].y >= 655 && bossBullets[j].y <= 800))
                     {   
                         bossBullets.splice(j,1);
                         player.removeLife();
@@ -280,7 +286,12 @@
                             gameOver = true;
                         }             
                     }
+                    else
+                        if(boss[0].y >= 480){
+                            gameOver = true;
+                        }             
                 }
+                
             }
     }
 
@@ -329,22 +340,22 @@
         if (boss.length > 0) {
             boss.forEach(function(bossIcon) {
                 bossIcon.draw();
-                if (monsterTouch == 0 ) {
+                if (monsterTouch >=0 && monsterTouch <4) {
                    printMonsterLife(imageCache['monsterLife1']);
                 }
-                else if (monsterTouch > 0 && monsterTouch <= 4) {
+                else if (monsterTouch >= 4 && monsterTouch < 8) {
                    printMonsterLife(imageCache['monsterLife2']);
                 }
-                else if (monsterTouch > 4 && monsterTouch <= 8) {
+                else if (monsterTouch >= 8 && monsterTouch < 12) {
                    printMonsterLife(imageCache['monsterLife3']);
                 }
-                else if (monsterTouch > 8 && monsterTouch <= 15) {
+                else if (monsterTouch >= 12 && monsterTouch < 16) {
                    printMonsterLife(imageCache['monsterLife4']);
                 }
-                else if (monsterTouch > 15 && monsterTouch <= 18) {
+                else if (monsterTouch >=16 && monsterTouch < 20) {
                    printMonsterLife(imageCache['monsterLife5']);
                 }
-                else if (monsterTouch > 20) {
+                else if (monsterTouch == 20) {
                     scoreMonster();
                     boss.splice(0,1);
                     gameWin = true; 
@@ -435,7 +446,7 @@
         this.y = startY;
         
         this.draw = function() {
-            context.drawImage(imageCache['invader'+this.type],this.x,this.y,45,45);
+            context.drawImage(imageCache['invader'+this.type],this.x,this.y,55,55);
 
         };
 
@@ -445,7 +456,7 @@
             {
                 x:2,
                 y:0,
-                amount:330// 660 daca crestem x impartim valoarea asta la x
+                amount:290
             },
             {
                 x:0,
@@ -455,7 +466,7 @@
             {
                 x:-2,
                 y:0,
-                amount:330
+                amount:290
             },
             {
                 x:0,
@@ -489,24 +500,24 @@
         this.currentAmount = 0;
         this.stage = [
             {
-                x:2,
+                x:3,
                 y:0,
-                amount:195
+                amount:130
             },
             {
                 x:0,
-                y:2,
-                amount:60
+                y:3,
+                amount:20
             },
             {
-                x:-2,
+                x:-3,
                 y:0,
-                amount:380
+                amount:253
             },
             {
                 x:0,
-                y:2,
-                amount:60
+                y:3,
+                amount:20
             }];
 
         this.move = function(){
@@ -514,8 +525,8 @@
             this.y += this.stage[this.currentStage].y;
             this.currentAmount++;
             if(this.currentAmount>=this.stage[this.currentStage].amount){
-                if(this.stage[this.currentStage].amount === 195 && this.currentAmount === 195){
-                    this.stage[this.currentStage].amount = 380;
+                if(this.stage[this.currentStage].amount === 130 && this.currentAmount === 130){
+                    this.stage[this.currentStage].amount = 253;
                 }
                 this.currentStage = (this.currentStage + 1)%4;
                 this.currentAmount = 0;

@@ -320,22 +320,22 @@
             boss.forEach(function(bossIcon) {
                 bossIcon.draw();
             
-                if (monsterTouch == 0 ) {
+                if (monsterTouch >=0 && monsterTouch <2) {
                    printMonsterLife(imageCache['monsterLife1']);
                 }
-                else if (monsterTouch > 0 && monsterTouch <= 2) {
+                else if (monsterTouch >= 2 && monsterTouch < 4) {
                    printMonsterLife(imageCache['monsterLife2']);
                 }
-                else if (monsterTouch > 2 && monsterTouch <= 4) {
+                else if (monsterTouch >= 4 && monsterTouch < 6) {
                    printMonsterLife(imageCache['monsterLife3']);
                 }
-                else if (monsterTouch > 4 && monsterTouch <= 6) {
+                else if (monsterTouch >= 6 && monsterTouch < 8) {
                    printMonsterLife(imageCache['monsterLife4']);
                 }
-                else if (monsterTouch > 6 && monsterTouch <= 8) {
+                else if (monsterTouch >=8 && monsterTouch < 10) {
                    printMonsterLife(imageCache['monsterLife5']);
                 }
-                else if (monsterTouch > 10) {
+                else if (monsterTouch == 10) {
                     scoreMonster();
                     boss.splice(0,1);
                     gameWin = true; 

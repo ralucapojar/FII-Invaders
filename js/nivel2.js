@@ -234,7 +234,7 @@
     }
 
     function checkInvaders(){
-        // 67,55 20 20
+        
         for (var i = 0; i < invaders.length; i++) {
             for(var j = 0; j < playerBullets.length; j++)
             {
@@ -252,7 +252,7 @@
     }
 
     function checkPlayer(){
-        // 130, 100 20 20
+        
         var life = player.getLife();
         var x = player.getPoz();
         if(invaders.length>0){
@@ -336,22 +336,23 @@
         if (boss.length > 0) {
             boss.forEach(function(bossIcon) {
                 bossIcon.draw();
-                if (monsterTouch == 0 ) {
+                
+                if (monsterTouch >=0 && monsterTouch <3) {
                    printMonsterLife(imageCache['monsterLife1']);
                 }
-                else if (monsterTouch > 0 && monsterTouch <= 3) {
+                else if (monsterTouch >= 3 && monsterTouch < 6) {
                    printMonsterLife(imageCache['monsterLife2']);
                 }
-                else if (monsterTouch > 3 && monsterTouch <= 6) {
+                else if (monsterTouch >= 6 && monsterTouch < 9) {
                    printMonsterLife(imageCache['monsterLife3']);
                 }
-                else if (monsterTouch > 6 && monsterTouch <= 10) {
+                else if (monsterTouch >= 9 && monsterTouch < 12) {
                    printMonsterLife(imageCache['monsterLife4']);
                 }
-                else if (monsterTouch > 10 && monsterTouch <= 13) {
+                else if (monsterTouch >=12 && monsterTouch < 15) {
                    printMonsterLife(imageCache['monsterLife5']);
                 }
-                else if (monsterTouch > 15) {
+                else if (monsterTouch == 15) {
                     scoreMonster();
                     boss.splice(0,1);
                     gameWin = true; 
