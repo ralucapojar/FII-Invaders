@@ -29,7 +29,7 @@
     //Initializare Boss
 
     var boss = [];
-    var newBoss = new Boss(400,20);
+    var newBoss = new Boss(400,80);
     boss.push(newBoss); 
     var bossBullets = [];
     // Initializare Player,Bullets
@@ -427,7 +427,7 @@
             {
                 x:2,
                 y:0,
-                amount:290// 660 daca crestem x impartim valoarea asta la x
+                amount:290
             },
             {
                 x:0,
@@ -471,14 +471,24 @@
         this.currentAmount = 0;
         this.stage = [
             {
-                x:2,
+                x:3,
                 y:0,
-                amount:195// 660 daca crestem x impartim valoarea asta la x
+                amount:130
             },
             {
-                x:-2,
+                x:0,
+                y:3,
+                amount:40
+            },
+            {
+                x:-3,
                 y:0,
-                amount:380
+                amount:253
+            },
+            {
+                x:0,
+                y:-3,
+                amount:40
             }];
 
         this.move = function(){
@@ -486,10 +496,10 @@
             this.y += this.stage[this.currentStage].y;
             this.currentAmount++;
             if(this.currentAmount>=this.stage[this.currentStage].amount){
-                if(this.stage[this.currentStage].amount === 195 && this.currentAmount === 195){
-                    this.stage[this.currentStage].amount = 380;
+                if(this.stage[this.currentStage].amount === 130 && this.currentAmount === 130){
+                    this.stage[this.currentStage].amount = 253;
                 }
-                this.currentStage = (this.currentStage + 1)%2;
+                this.currentStage = (this.currentStage + 1)%4;
                 this.currentAmount = 0;
             }
             
