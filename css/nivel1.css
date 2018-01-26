@@ -130,7 +130,7 @@ body {
   border-style: ridge;
   border-color:red;
   position: absolute;
-  top: 13%;
+  top: 25%;
   left: 32%;
   width: 700px;
   height: 500px;
@@ -138,15 +138,32 @@ body {
 
 }
 
-.life, #noLife, #score{
+#noLife{
     height: 50px;
     width: 150px;
-    margin: 0px;
-    margin-left: 15%;
+    position: absolute;
+    margin-left: 36%;
+    margin-right: 10%;
+    margin-top: 1%;
     color: darkred;
     font-weight: bold;
     text-align: -webkit-center;
     background-color: lightgoldenrodyellow;
+    border-style: ridge;
+    border-color: red;
+}
+#score{
+    height: 50px;
+    width: 150px;
+    position: absolute;
+    margin-left: 60%;
+    margin-top: 1%;;
+    color: darkred;
+    font-weight: bold;
+    text-align: -webkit-center;
+    background-color: lightgoldenrodyellow;
+    border-style: ridge;
+    border-color: red;
 }
 
 .btn-again, .btn-next{
