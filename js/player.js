@@ -15,7 +15,7 @@ var Player;
 		return {
 			init: function(){
 				playerObj = {
-					life: 3,
+					life: 5,
 					img: 'student1',
 					speedX: 20, // movement in pixels per second
 					startPosition: 460, 

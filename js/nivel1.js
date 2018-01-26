@@ -4,8 +4,8 @@
     
     //--------------------------Vlad
     
-    var again = document.getElementsByClassName("btn-again");
-    var next = document.getElementsByClassName("btn-next");
+    var again = document.getElementsByClassName("btn-again")[0];
+    var next = document.getElementsByClassName("btn-next")[0];
     
     var canvas;
     var context;
@@ -336,8 +336,12 @@
                    printMonsterLife(imageCache['monsterLife5']);
                 }
                 else if (monsterTouch > 10) {
+                    scoreMonster();
                     boss.splice(0,1);
                     gameWin = true; 
+                    printBtnAgain();
+                    printBtnNext();
+                    hideMonsterLife();
                 }
             });
         }
@@ -520,19 +524,33 @@
     };
 
 
+function scoreMonster(){
+    score = parseInt(localStorage.getItem(name));
+    score += 300;
+    localStorage.setItem(name, score);
+}
+
 function getScore(){
     score = parseInt(localStorage.getItem(name));
-    if (score  < 50 ){
+    if (invaders.length > 0 && invaders.length < 6 ){
         score +=10;
     }
-    if (score >= 50){
+    else if (invaders.length >= 6 && invaders.length < 12){
         score +=20;
     }
-    if (score >= 80){
+    else if (invaders.length >= 12 && invaders.length < 24){
         score +=30;
+    }
+    else if (invaders.length >= 24){
+        score +=50;
     }
 
     localStorage.setItem(name, score);
+}
+
+function hideMonsterLife(){
+    var img = document.getElementById("monsterLife");
+    img.style.display = "none";   
 }
 
 function printMonsterLife(path){ 

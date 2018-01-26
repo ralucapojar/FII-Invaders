@@ -140,6 +140,7 @@ body {
 }
 
 .btn-again, .btn-next{
+  text-decoration:none;
   display: none;
   height: 50px;
   width: 150px;
