@@ -465,12 +465,22 @@
             {
                 x:2,
                 y:0,
-                amount:165// 660 daca crestem x impartim valoarea asta la x
+                amount:195
+            },
+            {
+                x:0,
+                y:2,
+                amount:60
             },
             {
                 x:-2,
                 y:0,
-                amount:330
+                amount:380
+            },
+            {
+                x:0,
+                y:2,
+                amount:60
             }];
 
         this.move = function(){
@@ -478,15 +488,13 @@
             this.y += this.stage[this.currentStage].y;
             this.currentAmount++;
             if(this.currentAmount>=this.stage[this.currentStage].amount){
-                if(this.stage[this.currentStage].amount === 165 && this.currentAmount === 165){
-                    this.stage[this.currentStage].amount = 330;
+                if(this.stage[this.currentStage].amount === 195 && this.currentAmount === 195){
+                    this.stage[this.currentStage].amount = 380;
                 }
-                this.currentStage = (this.currentStage + 1)%2;
+                this.currentStage = (this.currentStage + 1)%4;
                 this.currentAmount = 0;
             }
             
-        };
-
     };
 
     function removeBullet(bullet) {
