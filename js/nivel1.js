@@ -1,4 +1,4 @@
-    var monsterTouch = 0 ;
+  var monsterTouch = 0 ;
     var score;
     var name;
     
@@ -6,7 +6,7 @@
     
     var again = document.getElementsByClassName("btn-again");
     var next = document.getElementsByClassName("btn-next");
-	
+    
     var canvas;
     var context;
     var imageCache = {};
@@ -65,28 +65,28 @@
 
     function createInvaders(){
 
-    	var startInvaderRow=6;
-    	var typeOfInvader = invaderType.invader1;
-    	for (var i = 0; i < 4; i++) {
+        var startInvaderRow=6;
+        var typeOfInvader = invaderType.invader1;
+        for (var i = 0; i < 4; i++) {
             var startInvaderColumn =20;
             var typeOfInvader = invaderType.invader1;
             if (i === 1 || i === 2) {
                 typeOfInvader = invaderType.invader2;
             }
-          	if (i > 2) {
-             	typeOfInvader = invaderType.invader3;
+            if (i > 2) {
+                typeOfInvader = invaderType.invader3;
             }
             for(var j = 0; j < 5; j++){
-           		var newInvader = new invader(typeOfInvader, startInvaderColumn, startInvaderRow);
+                var newInvader = new invader(typeOfInvader, startInvaderColumn, startInvaderRow);
                 invaders.push(newInvader);
-            	startInvaderColumn = startInvaderColumn + 65;
-    		};
-    		startInvaderRow = startInvaderRow + 30;
-    	};
+                startInvaderColumn = startInvaderColumn + 65;
+            };
+            startInvaderRow = startInvaderRow + 30;
+        };
     };
-	window.onload = function(){
-    	canvas = document.getElementById('canvas');
-    	context = canvas.getContext('2d');
+    window.onload = function(){
+        canvas = document.getElementById('canvas');
+        context = canvas.getContext('2d');
         context.drawImage(imageCache['student1'], player.getPoz(), 655, 100, 100);
         var url_string= window.location.href;
         var url = new URL(url_string);
@@ -97,7 +97,7 @@
             score = parseInt(localStorage.getItem(name));
         }       
 
-    	createInvaders();
+        createInvaders();
         setInterval(gameLoop, 33);
 
     };
@@ -188,7 +188,7 @@
             else
                 context.drawImage(imageCache['gameOver'],0,0,canvas.width,canvas.height);
         contor++;
-	};
+    };
 
     document.addEventListener("keydown", keyDownTextField, false);
 
@@ -286,7 +286,7 @@
         }
     };
 
-	function drawInvaders() {
+    function drawInvaders() {
         if (invaders.length > 0) {
             invaders.forEach(function(invaderIcon) {
                 invaderIcon.draw();
@@ -371,8 +371,8 @@
     function invader(type, startX, startY) {
         
         this.type = type;
-     	this.image = imageCache['invader' + this.type];
-     	this.x = startX;
+        this.image = imageCache['invader' + this.type];
+        this.x = startX;
         this.y = startY;
         
         this.draw = function() {
@@ -382,38 +382,38 @@
 
         this.currentStage = 0;
         this.currentAmount = 0;
-     	this.stage = [
-        	{
-        		x:2,
-        		y:0,
-        		amount:330// 660 daca crestem x impartim valoarea asta la x
-			},
-			{
-        		x:0,
-        		y:2,
-        		amount:25
-			},
-			{
-        		x:-2,
-        		y:0,
-        		amount:330
-			},
-			{
-        		x:0,
-        		y:2,
-        		amount:25
-			}];
+        this.stage = [
+            {
+                x:2,
+                y:0,
+                amount:330// 660 daca crestem x impartim valoarea asta la x
+            },
+            {
+                x:0,
+                y:2,
+                amount:25
+            },
+            {
+                x:-2,
+                y:0,
+                amount:330
+            },
+            {
+                x:0,
+                y:2,
+                amount:25
+            }];
 
-		this.move = function(){
-			this.x += this.stage[this.currentStage].x;
-			this.y += this.stage[this.currentStage].y;
-			this.currentAmount++;
-			if(this.currentAmount>=this.stage[this.currentStage].amount){
-				this.currentStage = (this.currentStage + 1)%4;
-				this.currentAmount = 0;
-			}
-			
-		};
+        this.move = function(){
+            this.x += this.stage[this.currentStage].x;
+            this.y += this.stage[this.currentStage].y;
+            this.currentAmount++;
+            if(this.currentAmount>=this.stage[this.currentStage].amount){
+                this.currentStage = (this.currentStage + 1)%4;
+                this.currentAmount = 0;
+            }
+            
+        };
 
     };
 
@@ -533,4 +533,3 @@ function removeBtnAgain(){
 function removeBtnNext(){
     next.style.display = none;
 }
-
