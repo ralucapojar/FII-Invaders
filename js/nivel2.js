@@ -1,9 +1,27 @@
+    var objPlayer;
+    var sortable = [];
+   
+
+    objPlayer = Object.keys(localStorage).reduce(function(obj, str) { 
+        obj[str] = localStorage.getItem(str); 
+        return obj
+    }, {});
+
+    for (var player in objPlayer) {
+        sortable.push([player, objPlayer[player]]);
+    }
+
+    sortable.sort(function(a, b) {
+        return a[1] - b[1];
+    }) ;
+
     var monsterTouch = 0 ;
     var score;
     var name;
 
     //--------------------------Vlad
     
+    var play = document.getElementsByClassName("btn-player")[0];
     var again = document.getElementsByClassName("btn-again")[0];
     var next = document.getElementsByClassName("btn-next")[0];
     
@@ -67,7 +85,7 @@
     loadImage('monsterLife3', '../img/b3.png');
     loadImage('monsterLife4', '../img/b4.png');
     loadImage('monsterLife5', '../img/b5.png');
-
+    printHighScore();
 
 
     function createInvaders(){
@@ -214,6 +232,7 @@
                 context.drawImage(imageCache['gameWin'],0,0,canvas.width,canvas.height);
             }
             else {
+                printBtnPlayer();
                 printBtnAgain();
                 context.drawImage(imageCache['gameOver'],0,0,canvas.width,canvas.height);
             }
@@ -361,6 +380,7 @@
                     gameWin = true; 
                     printBtnAgain();
                     printBtnNext();
+                    printBtnPlayer();
                     hideMonsterLife();
                 }
             });
@@ -594,6 +614,16 @@ function getScore(){
     localStorage.setItem(name, score);
 }
 
+function printHighScore(){
+     for (var player in sortable) {
+        var h1 = document.createElement("h1");   
+        var text = "" + sortable[player][0] + " : " + sortable[player][1];        
+        var textnode = document.createTextNode(text);         
+        h1.appendChild(textnode);                         
+        document.getElementById("highScores").appendChild(h1);  
+     }
+}
+
 function hideMonsterLife(){
     var img = document.getElementById("monsterLife");
     img.style.display = "none";   
@@ -616,12 +646,20 @@ function printScore(){
     document.getElementById("score").innerHTML = text;                         // Append the text to <li> 
 }
 
+function printBtnPlayer(){
+    play.style.display = "block";   
+}
+
 function printBtnAgain(){
     again.style.display = "block";   
 }
 
 function printBtnNext(){
     next.style.display = "block";   
+}
+
+function removeBtnPlayer(){
+    play.style.display = "none";
 }
 
 function removeBtnAgain(){
