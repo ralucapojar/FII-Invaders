@@ -1,9 +1,4 @@
 
-@import url('./node_modules/normalize.css/normalize.css');
-@import url('./fonts/libre-baskerville-regular.css');
-@import url('./fonts/libre-baskerville-bold.css');
-@import url('./fonts/libre-baskerville-italic.css');
-
 * {
   box-sizing: border-box;
 }
