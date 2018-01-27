@@ -179,7 +179,7 @@ body {
   border-radius: 50%;
 }
 
-.btn-next{
+.btn-absolvire{
   text-decoration:none;
   position: absolute;
   display: none;
@@ -196,6 +196,6 @@ body {
   border-radius: 50%;
 }
 
-.btn-again a, .btn-next a, .btn-player a{
+.btn-again a, .btn-player a, .btn-absolvire a{
   text-decoration: none;
 }

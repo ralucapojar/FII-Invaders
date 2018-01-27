@@ -23,6 +23,7 @@
     
     var again = document.getElementsByClassName("btn-again")[0];
     var next = document.getElementsByClassName("btn-next")[0];
+    var abs = document.getElementsByClassName("btn-absolvire")[0];
     
     var canvas;
     var context;
@@ -380,7 +381,7 @@
                     boss.splice(0,1);
                     gameWin = true; 
                     printBtnAgain();
-                    printBtnNext();
+                    printBtnAbs();
                     hideMonsterLife();
                 }
             });
@@ -660,6 +661,9 @@ function printBtnAgain(){
 function printBtnNext(){
     next.style.display = "block";   
 }
+function printBtnAbs(){
+    abs.style.display = "block";   
+}
 
 function removeBtnPlayer(){
     play.style.display = "none";
@@ -671,4 +675,8 @@ function removeBtnAgain(){
 
 function removeBtnNext(){
     next.style.display = "none";
+}
+
+function removeBtnAbs(){
+    abs.style.display = "none";
 }
