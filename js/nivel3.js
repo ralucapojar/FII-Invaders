@@ -1,3 +1,20 @@
+    var objPlayer;
+    var sortable = [];
+   
+
+    objPlayer = Object.keys(localStorage).reduce(function(obj, str) { 
+        obj[str] = localStorage.getItem(str); 
+        return obj
+    }, {});
+
+    for (var player in objPlayer) {
+        sortable.push([player, objPlayer[player]]);
+    }
+
+    sortable.sort(function(a, b) {
+        return a[1] - b[1];
+    }) ;
+
     var monsterTouch = 0 ;
     var score;
     var name;
@@ -66,7 +83,7 @@
     loadImage('monsterLife3', '../img/b3.png');
     loadImage('monsterLife4', '../img/b4.png');
     loadImage('monsterLife5', '../img/b5.png');
-
+    printHighScore();
 
 
     function createInvaders(){
@@ -573,6 +590,16 @@
         }  
     };
 
+function printHighScore(){
+     for (var player in sortable) {
+        var h1 = document.createElement("h1");   
+        var text = "" + sortable[player][0] + " : " + sortable[player][1];        
+        var textnode = document.createTextNode(text);         
+        h1.appendChild(textnode);                         
+        document.getElementById("highScores").appendChild(h1);  
+     }
+}
+
 
 function scoreMonster(){
     score = parseInt(localStorage.getItem(name));
@@ -615,23 +642,26 @@ function printScore(){
     document.getElementById("score").innerHTML = text;                       
 }
 
-function printLife(){  
-    var text = " Life: " + player.getLife() + " &#10084;";        
-    document.getElementById("noLife").innerHTML = text;                         
+function printBtnPlayer(){
+    play.style.display = "block";   
 }
 
-function printBtnAgain() {
+function printBtnAgain(){
     again.style.display = "block";   
 }
 
-function printBtnNext() {
+function printBtnNext(){
     next.style.display = "block";   
 }
 
-function removeBtnAgain() {
+function removeBtnPlayer(){
+    play.style.display = "none";
+}
+
+function removeBtnAgain(){
     again.style.display = "none";
 }
 
-function removeBtnNext() {
+function removeBtnNext(){
     next.style.display = "none";
 }
