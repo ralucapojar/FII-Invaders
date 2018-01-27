@@ -563,7 +563,7 @@ function printScore(){
 }
 
 function printLife(){  
-    var text = " Life &#10084; : " + player.getLife(); 
+    var text = " Life : " + player.getLife() +' &#10084;'; 
     document.getElementById("noLife").innerHTML = text;                        
 }
 

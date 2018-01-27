@@ -61,11 +61,11 @@
     loadImage('gameOver', '../img/gameOver.png');
     loadImage('boss', '../img/boss3.png');
     loadImage('gameWin', '../img/gameWin.jpg');
-    loadImage('monsterLife1', '../img/bosslive1.png');
-    loadImage('monsterLife2', '../img/bosslive2.png');
-    loadImage('monsterLife3', '../img/bosslive3.png');
-    loadImage('monsterLife4', '../img/bosslive4.png');
-    loadImage('monsterLife5', '../img/bosslive5.png');
+    loadImage('monsterLife1', '../img/b1.png');
+    loadImage('monsterLife2', '../img/b2.png');
+    loadImage('monsterLife3', '../img/b3.png');
+    loadImage('monsterLife4', '../img/b4.png');
+    loadImage('monsterLife5', '../img/b5.png');
 
 
 
@@ -613,7 +613,7 @@ function printScore(){
 }
 
 function printLife(){  
-    var text = " Life: " + player.getLife() + " *";        
+    var text = " Life: " + player.getLife() + " &#10084;";        
     document.getElementById("noLife").innerHTML = text;                         
 }
 

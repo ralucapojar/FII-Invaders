@@ -37,6 +37,7 @@ body {
     border: 1px solid #888;
     width: 60%;
     opacity: 0.95;
+    color:lightgoldenrodyellow!important;
 }
 
 /* The Close Button */
@@ -121,8 +122,8 @@ body {
   border-style: ridge;
   border-color: #00008B;
   position: absolute;
-  top: 23%;
-  left: 32%;
+  top: 25%;
+  left: 28%;
   width: 700px;
   height: 500px;
   
@@ -133,37 +134,36 @@ body {
     height: 50px;
     width: 200px;
     position: absolute;
-    margin-left: 30%;
-    margin-right: 10%;
+    margin-left: 37%;
     margin-top: 1%;
-    color: darkred;
+    color: lightgoldenrodyellow;
     font-weight: bold;
     text-align: -webkit-center;
-    background-color: lightgoldenrodyellow;
+    background-color: #687f91;
     border-style: ridge;
-    border-color: red;
+    border-color: #00008B;
 }
 #score{
     height: 50px;
     width: 200px;
     position: absolute;
-    margin-left: 50%;
+    margin-left: 52%;
     margin-top: 1%;;
-    color: darkred;
+    color: lightgoldenrodyellow;
     font-weight: bold;
     text-align: -webkit-center;
-    background-color: lightgoldenrodyellow;
+    background-color: #687f91;
     border-style: ridge;
-    border-color: red;
+    border-color: #00008B;
 }
 
 #monsterLife{
     display: none;
-    height: 90px;
-    width: 200px;
+    height: 100px;
+    width: 250px;
     position: absolute;
-    margin-left: 70%;
-    margin-top: -1%;
+    margin-left: 65%;
+    margin-top: -0.5%;
     font-weight: bold;
 }
 

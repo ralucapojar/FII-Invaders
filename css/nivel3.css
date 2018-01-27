@@ -97,10 +97,10 @@ body {
 
 #canvas{
   border-style: ridge;
-  border-color:#3d89d3;
+  border-color: #3d89d3;
   position: absolute;
-  top: 23%;
-  left: 32%;
+  top: 25%;
+  left: 28%;
   width: 700px;
   height: 500px;
   background-color: black;
@@ -111,37 +111,36 @@ body {
     height: 50px;
     width: 200px;
     position: absolute;
-    margin-left: 30%;
-    margin-right: 10%;
+    margin-left: 37%;
     margin-top: 1%;
-    color: darkred;
+    color: black;
     font-weight: bold;
     text-align: -webkit-center;
-    background-color: lightgoldenrodyellow;
+    background-color:  #8cb3d9;
     border-style: ridge;
-    border-color: red;
+    border-color: #3d89d3;
 }
 #score{
     height: 50px;
     width: 200px;
     position: absolute;
-    margin-left: 50%;
+    margin-left: 52%;
     margin-top: 1%;;
-    color: darkred;
+    color: black;
     font-weight: bold;
     text-align: -webkit-center;
-    background-color: lightgoldenrodyellow;
+    background-color:  #8cb3d9;
     border-style: ridge;
-    border-color: red;
+    border-color: #3d89d3;
 }
 
 #monsterLife{
     display: none;
-    height: 90px;
-    width: 200px;
+    height: 100px;
+    width: 250px;
     position: absolute;
-    margin-left: 70%;
-    margin-top: -1%;
+    margin-left: 65%;
+    margin-top: -0.5%;
     font-weight: bold;
 }
 

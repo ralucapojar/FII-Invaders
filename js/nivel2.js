@@ -62,11 +62,11 @@
     loadImage('boss', '../img/boss2.png');
     loadImage('gameWin', '../img/gameWin.jpg');
     loadImage('background', '../img/nivel2-canvas.jpg');
-    loadImage('monsterLife1', '../img/bosslive1.png');
-    loadImage('monsterLife2', '../img/bosslive2.png');
-    loadImage('monsterLife3', '../img/bosslive3.png');
-    loadImage('monsterLife4', '../img/bosslive4.png');
-    loadImage('monsterLife5', '../img/bosslive5.png');
+    loadImage('monsterLife1', '../img/b1.png');
+    loadImage('monsterLife2', '../img/b2.png');
+    loadImage('monsterLife3', '../img/b3.png');
+    loadImage('monsterLife4', '../img/b4.png');
+    loadImage('monsterLife5', '../img/b5.png');
 
 
 
@@ -603,7 +603,7 @@ function printMonsterLife(path){
 }
 
 function printLife(){  
-    var text = " Life: " + player.getLife() + " *";          // Create a <li> node   
+    var text = " Life: " + player.getLife() + "  &#10084;";          // Create a <li> node   
     document.getElementById("noLife").innerHTML = text;                         // Append the text to <li> 
 }
 
