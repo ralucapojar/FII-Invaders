@@ -144,7 +144,7 @@ body {
     font-weight: bold;
 }
 
-.btn-again, .btn-next{
+.btn-again, .btn-next, .btn-player{
   text-decoration:none;
   display: none;
   height: 50px;
