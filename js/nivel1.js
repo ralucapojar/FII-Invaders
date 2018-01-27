@@ -185,11 +185,14 @@
                     moveBulletsBoss()
             }
         }
-        else
-            if(gameWin)
+       else
+            if(gameWin){
                 context.drawImage(imageCache['gameWin'],0,0,canvas.width,canvas.height);
-            else
+            }
+            else {
+                printBtnAgain();
                 context.drawImage(imageCache['gameOver'],0,0,canvas.width,canvas.height);
+            }
         contor++;
     };
 
