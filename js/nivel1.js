@@ -12,7 +12,7 @@
     }
 
     sortable.sort(function(a, b) {
-        return a[1] - b[1];
+        return b[1] - a[1];
     }) ;
 
   var monsterTouch = 0 ;
@@ -566,12 +566,14 @@ function getScore(){
 }
 
 function printHighScore(){
+    var index = 1 ;
      for (var player in sortable) {
-        var h1 = document.createElement("h1");   
-        var text = "" + sortable[player][0] + " : " + sortable[player][1];        
+        var h1 = document.createElement("h3");   
+        var text = "" + index  + ". " + sortable[player][0] + " : " + sortable[player][1];        
         var textnode = document.createTextNode(text);         
         h1.appendChild(textnode);                         
         document.getElementById("highScores").appendChild(h1);  
+        index++;
      }
 }
 
@@ -591,6 +593,11 @@ function printScore(){
     score = parseInt(localStorage.getItem(name)); 
     var text = " Score: " + score;         
     document.getElementById("score").innerHTML = text;                          
+}
+
+function printLife(){  
+    var text = " Life: " + player.getLife() + "  &#10084;";           
+    document.getElementById("noLife").innerHTML = text;                         
 }
 
 function printBtnPlayer(){

@@ -30,6 +30,7 @@ body {
 
 /* Modal Content */
 .modal-content {
+    text-align: center;
     background-color: #8cb3d9;
     margin: auto;
     padding: 20px;
