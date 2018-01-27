@@ -85,7 +85,7 @@
           Aplicatia este realizata pe conceptul client si server. Aceste doua parti ale dezvoltarii insa vor fi strans suprapuse una cu alta si intr-o continua comunicare.
         </p>
         <p>
-          Clientul va reprezenta interfata aplicatiei si toate interactiunile jucatorului cu aceasta. Prin intermediul interfetei acesta isi va putea introduce username-ul in aplicatie. Clientul, folosind informatiile din back-end va implementa si regulile / restrictiile pe care jucatorul le are, actiunine pe care acesta le poate face la un anumit nivel. De asemenea clientul se va ocupa de trimiterea de cereri catre server si prelucrarea acestora .
+          Clientul va reprezenta interfata aplicatiei si toate interactiunile jucatorului cu aceasta. Prin intermediul interfetei acesta isi va putea introduce username-ul in aplicatie. Clientul, folosind informatiile din back-end va implementa si regulile / restrictiile pe care jucatorul le are, actiunile pe care acesta le poate face la un anumit nivel. De asemenea clientul se va ocupa de trimiterea de cereri catre server si prelucrarea acestora .
         </p>
         <p>
           Serverul va reprezenta partea de back-end a aplicatiei, fiind localizat la o adresa publica cu care clientul va comunica. Principalele functii ale acestuia vor fi oferirea unui mecanism de introducere a username-ului si prelucrarea si oferirea informatiilor care se gasesc în baza de date catre utilizatori. 
@@ -93,9 +93,9 @@
         </section>
         <section id="tehnologii">
           <h3>Tehnologii folosite</h3>
-          <p><h5>CLIENT</h5></p>
+          
           <p>
-            <font color="red">HTML </font>- este o forma de marcare orientata catre prezentarea documentelor text pe o singura pagina, utilizand un software de redare specializat, numit agent utilizator HTML, cel mai bun exemplu de astfel de software fiind browserul web. Astfel, în aplicația noastră, HTML, folosit împreună cu CSS, va fi folosit pentru redarea elementelor de pe pagina.
+            <font color="red">HTML </font>- este o forma de marcare orientata catre prezentarea documentelor text pe o singura pagina, utilizand un software de redare specializat, numit agent utilizator HTML, cel mai bun exemplu de astfel de software fiind browserul web. Astfel, în aplicația noastră, HTML, folosit împreună cu CSS, va fi folosit pentru redarea elementelor de pe pagina (inclusiv a canvasului).
           </p>
           <p>
              <font color="red">CSS (Cascading Style Sheets)</font> - este un standard pentru formatarea elementelor unui document HTML. Stilurile se pot atasa elementelor HTML prin intermediul unor fisiere externe sau in cadrul documentului, prin elementul style si/sau atributul style.
@@ -103,16 +103,22 @@
           <p>
             <font color="red">JavaScript (JS)</font> - este un limbaj de programare orientat obiect bazat pe conceptul prototipurilor. Este folosit mai ales pentru introducerea unor functionalitati in paginile web, codul Javascript din aceste pagini fiind rulat de catre browser. Cea mai des intalnita utilizare a JavaScript este in scriptarea paginilor web. Programatorii web pot ingloba in paginile HTML script-uri pentru diverse activitati cum ar fi verificarea datelor introduse de utilizatori sau crearea de meniuri sau animatii.
           </p>
-          <p><h5>SERVER</h5></p>
-          <p>
-            <font color="red">Oracle DB Driver</font> - driver-ul oficial pentru conectarea la bazele de date Oracle, pentru Node.js, întreținut de către Oracle Corp. Fiind modulul oficial, acesta este extensiv, puternic și cu o documentație amănunțită.
-          </p>
+          
         </section>
         <section id="article">
           <h3>Schema arhitecturala</h3>
           <p></p>
-
         </section>
+
+        <section id="pages">
+          <p>
+             Aplicatia FII Invaders va fi arhitecturata in stilul MVC (Model-View-Controller) - View-ul se va ocupa de afisarea datelor, controllerul va coordona interactiunile utilizatorului cu back-end-ul, care la randul sau va include modelul si logica aplicatiei.
+          </p>
+            <figure typeof="sa:Image">
+            <img src="mvc.png" width="976" height="452">
+          </figure>
+       
+
         <section id="pages">
 
           <h3>Pages</h3>
@@ -129,16 +135,25 @@
           <p>
             Pagina 'Anul 1' reprezinta primul nivel al jocului. Acesta este reprezentat de una din materiile importante ale primul an de facultate si anume Matematica, care pune numeroase probleme multor studenti din cadrul facultatii.
           </p>
+           <figure typeof="sa:Image">
+            <img src=".jpg" width="976" height="452">
+          </figure>
 
           <p><h4>Anul 2</h4></p>
           <p>
             Pagina 'Anul 2' reprezinta al doilea nivel al jocului. Acesta este reprezentat de toate materiile importante din anul doi de facultate si anume Java, Tehnologii Web, PHP, Baze de Date, care pune numeroase probleme multor studenti din cadrul facultatii.
           </p>
+           <figure typeof="sa:Image">
+            <img src=".jpg" width="976" height="452">
+          </figure>
          
           <p><h4>Anul 3</h4></p>
           <p>
-            Pagina 'Anul 3' reprezinta al treilea nivel al jocului. Acesta este reprezentat de una din materiile importante din anul trei de facultate si anume Securitatea Informatiei,ML, Dezvoltarea aplicatiilor Web la nivel de client,Analiza reţelelor media sociale, care pune numeroase probleme multor studenti din cadrul facultatii.
+            Pagina 'Anul 3' reprezinta al treilea nivel al jocului. Acesta este reprezentat de una din materiile importante din anul trei de facultate si anume Securitatea Informatiei,Invatare automata,Dezvoltarea aplicatiilor Web la nivel de client,Python, care pune numeroase probleme multor studenti din cadrul facultatii.
           </p>
+           <figure typeof="sa:Image">
+            <img src=".jpg" width="976" height="452">
+          </figure>
          
         </section>
         <section id="game">
@@ -148,11 +163,11 @@
           </p>
           
           <p>
-           FII Invaders este un joc ce aminteste de clasicul Space Invaders. Ideea jocului este foarte simplista. Sunteți un student al Facultatii de Informatica Iasi care trebuie sa distruga toti "invatatorii" facultatii ce invadeaza fiecare an al facultatii. Utilizati bara [SPACE] pentru a impusca fiecare invadator. Fiti atenti, totusi, pentru ca acesti invadatori trag inapoi si pe masura ce inaintati in ani, invadatorii facultati devin  tot mai rapizi . Pentru a va asigura ca absolviti fiecare an, dezvoltati si o modalitate de alergare. Incercati sa distrugeti randuri intregi de invadatori simultan, deoarece este mai usor sa trageti intr-o multime, decat sa identificati fiecare invatador individual.
+           FII Invaders este un joc ce aminteste de clasicul Space Invaders. Ideea jocului este foarte simplista. Sunteti un student al Facultatii de Informatica Iasi care trebuie sa distruga toti "invatatorii" facultatii ce invadeaza fiecare an al facultatii. Utilizati [SPACE] pentru a impusca fiecare invadator si sagetile stanga - dreapta pentru a deplasa studentul. Fiti atenti, totusi, pentru ca acesti invadatori trag inapoi si pe masura ce inaintati in ani, invadatorii facultati devin tot mai multi si mai greu de omorat . Incercati sa distrugeti randuri intregi de invadatori simultan, deoarece este mai usor sa trageti intr-o multime, decat sa identificati fiecare invatador individual.
           </p>
 
           <p><h4>Reguli de joc</h4></p>
-          <p>Nivele trebuie parcurse in ordine. Pentru a  trece un nivel trebuie doborati toti invadatori respectivului nivel si de a ramane,studentul, in viata, adica fara a fi impuscat de invadatori mai mult de 3.</p>
+          <p>Nivele trebuie parcurse in ordine. Pentru a  trece un nivel trebuie doborati toti invadatori respectivului nivel si de a ramane in viata, adica fara a fi impuscat de invadatori mai mult de 3 ori. La finalul fiecarui nivel va aparea 'liderul' invadatorilor care trebuie si el doborat, avand si el 5 vieti</p>
           
           </section>
            <section id="modelare-date">
