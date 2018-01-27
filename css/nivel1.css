@@ -139,7 +139,17 @@ body {
     font-weight: bold;
 }
 
-.btn-again, .btn-next, .btn-player{
+.btn-player{
+  text-decoration:none;
+  height: 50px;
+  width: 150px;
+  margin: 0px;
+  color: darkred;
+  font-weight: bold;
+  text-align: -webkit-center;
+  background-color: lightgoldenrodyellow;
+}
+.btn-again, .btn-next{
   text-decoration:none;
   display: none;
   height: 50px;
@@ -150,3 +160,6 @@ body {
   text-align: -webkit-center;
   background-color: lightgoldenrodyellow;
 }
+
+.btn-again a, .btn-next a, .btn-player a{
+text-decoration: none;}
