@@ -94,7 +94,7 @@ body {
   border-color:red;
   position: absolute;
   top: 25%;
-  left: 32%;
+  left: 28%;
   width: 700px;
   height: 500px;
   background-color: black;
@@ -105,8 +105,7 @@ body {
     height: 50px;
     width: 200px;
     position: absolute;
-    margin-left: 30%;
-    margin-right: 10%;
+    margin-left: 37%;
     margin-top: 1%;
     color: darkred;
     font-weight: bold;
@@ -119,7 +118,7 @@ body {
     height: 50px;
     width: 200px;
     position: absolute;
-    margin-left: 50%;
+    margin-left: 52%;
     margin-top: 1%;;
     color: darkred;
     font-weight: bold;
@@ -131,11 +130,11 @@ body {
 
 #monsterLife{
     display: none;
-    height: 90px;
-    width: 200px;
+    height: 100px;
+    width: 250px;
     position: absolute;
-    margin-left: 70%;
-    margin-top: -1%;
+    margin-left: 65%;
+    margin-top: -0.5%;
     font-weight: bold;
 }
 

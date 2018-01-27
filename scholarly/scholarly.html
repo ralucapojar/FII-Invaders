@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width">
     <title>FII Invaders</title>
     <link rel="stylesheet" href="scholarly.css">
-    <link rel="stylesheet" href="node_modules/prismjs/themes/prism-coy.css">
-    <script src="node_modules/prismjs/prism.js" defer></script>
   </head>
   <body prefix="schema: http://schema.org/ xsd: http://www.w3.org/2001/XMLSchema# sa: https://ns.science.ai/">
     <header>
@@ -122,7 +120,7 @@
         <section id="pages">
 
           <h3>Pages</h3>
-          <p><h4>Home</h4></p>
+          <p><h4>Index</h4></p>
           <p>
             Aceasta pagina este prima pagina a jocului, unde trebuie sa ne scriem username-ul care va fi salvat local pentru a incepe jocul.
           </p>
@@ -136,7 +134,7 @@
             Pagina 'Anul 1' reprezinta primul nivel al jocului. Acesta este reprezentat de una din materiile importante ale primul an de facultate si anume Matematica, care pune numeroase probleme multor studenti din cadrul facultatii.
           </p>
            <figure typeof="sa:Image">
-            <img src=".jpg" width="976" height="452">
+            <!-- <img src=".jpg" width="976" height="452"> -->
           </figure>
 
           <p><h4>Anul 2</h4></p>
@@ -144,7 +142,7 @@
             Pagina 'Anul 2' reprezinta al doilea nivel al jocului. Acesta este reprezentat de toate materiile importante din anul doi de facultate si anume Java, Tehnologii Web, PHP, Baze de Date, care pune numeroase probleme multor studenti din cadrul facultatii.
           </p>
            <figure typeof="sa:Image">
-            <img src=".jpg" width="976" height="452">
+            <!-- <img src=".jpg" width="976" height="452"> -->
           </figure>
          
           <p><h4>Anul 3</h4></p>
@@ -152,10 +150,52 @@
             Pagina 'Anul 3' reprezinta al treilea nivel al jocului. Acesta este reprezentat de una din materiile importante din anul trei de facultate si anume Securitatea Informatiei,Invatare automata,Dezvoltarea aplicatiilor Web la nivel de client,Python, care pune numeroase probleme multor studenti din cadrul facultatii.
           </p>
            <figure typeof="sa:Image">
-            <img src=".jpg" width="976" height="452">
+            <!-- <img src=".jpg" width="976" height="452"> -->
           </figure>
          
         </section>
+
+        <section id="aspecte">
+          <h3>Aspecte ale jocului</h3>
+          <p><h4>Meniu</h4></p>
+          <p>
+          Pe fiecare corespunzatoare fiecarui nivel este disponibul un meniu (Modal Box) unde se gasesc: descrierea jocului, regulile jocului, modul de a juca si clasamentul curent al jocului .
+          </p>
+          <figure typeof="sa:Image">
+            <img src="modal.png" width="400" height="452">
+          </figure>
+
+           <p><h4>Studentul</h4></p>
+          <p>
+          Studentul are la dispozitie 3 vieti. El trebuie sa impuste toti invaderii si liderul acestora. La finalul fiecarui nivel poate relua respectivul nivel sau sa treaca la urmatorul nivel . 
+          </p>
+          <figure typeof="sa:Image">
+            <img src="s1.png" width="50" height="70">
+            <img src="s2.png" width="50" height="70">
+          </figure>
+
+          <p><h4>Invaders</h4></p>
+          <p>
+          Invaderii difera ca forma, culoare, marime, miscarea si numar de la un nivel la altul . Ei arunca cu bombe in mod random in student si pot fi omorati daca sunt atinsi de impuscaturile studentului fiecare invader are o singura viata. 
+          </p>
+          <figure typeof="sa:Image">
+            <img src="m1.png" width="30" height="30">
+            <img src="m2.png" width="30" height="30">
+            <img src="m3.png" width="30" height="30">
+            <img src="m4.png" width="30" height="30">
+          </figure>
+
+          <p><h4>Liderul</h4></p>
+          <p>
+          Liderul invadatorilor este cel care conduce toti invaderii din nivelul respectiv , fiind reprezentat de cate un profesor pentru fiecare an in parte. Acesta arunca cu bombe din pozitii diferite la fiecare nivel avand un numar de 5 vieti. 
+          </p>
+          <figure typeof="sa:Image">
+            <img src="b1.png" >
+            <img src="b2.png" >
+            <img src="b3.png" >
+          </figure>
+
+
         <section id="game">
           <h3>Gameplay</h3>
           <p>
@@ -163,22 +203,14 @@
           </p>
           
           <p>
-           FII Invaders este un joc ce aminteste de clasicul Space Invaders. Ideea jocului este foarte simplista. Sunteti un student al Facultatii de Informatica Iasi care trebuie sa distruga toti "invatatorii" facultatii ce invadeaza fiecare an al facultatii. Utilizati [SPACE] pentru a impusca fiecare invadator si sagetile stanga - dreapta pentru a deplasa studentul. Fiti atenti, totusi, pentru ca acesti invadatori trag inapoi si pe masura ce inaintati in ani, invadatorii facultati devin tot mai multi si mai greu de omorat . Incercati sa distrugeti randuri intregi de invadatori simultan, deoarece este mai usor sa trageti intr-o multime, decat sa identificati fiecare invatador individual.
+           FII Invaders este un joc ce aminteste de clasicul Space Invaders. Ideea jocului este foarte simplista. Sunteti un student al Facultatii de Informatica Iasi care trebuie sa distruga toti "invatatorii" facultatii ce invadeaza fiecare an al facultatii. Utilizati [SPACE] pentru a impusca fiecare invadator si sagetile stanga - dreapta pentru a deplasa studentul. Fiti atenti, totusi, pentru ca acesti invadatori trag inapoi si pe masura ce inaintati in ani, invadatorii facultati devin tot mai multi si mai greu de omorat . 
           </p>
 
           <p><h4>Reguli de joc</h4></p>
-          <p>Nivele trebuie parcurse in ordine. Pentru a  trece un nivel trebuie doborati toti invadatori respectivului nivel si de a ramane in viata, adica fara a fi impuscat de invadatori mai mult de 3 ori. La finalul fiecarui nivel va aparea 'liderul' invadatorilor care trebuie si el doborat, avand si el 5 vieti</p>
-          
-          </section>
-           <section id="modelare-date">
-          <h3>Modelarea datelor</h3>
           <p>
-            Pentru stocarea și manipularea datelor necesare rulării aplicației se va folosi serverul de baze de date Oracle. 
-
-
+          Nivele trebuie parcurse in ordine. Pentru a  trece un nivel trebuie doborati toti invadatori respectivului nivel si de a ramane in viata, adica fara a fi impuscat de invadatori mai mult de 3 ori. La finalul fiecarui nivel va aparea 'liderul' invadatorilor care trebuie si el doborat, avand si el 5 vieti. 
           </p>
-
-          </section>
+          
           <section id="desfasurare">
           <h3>Modul de desfasurare</h3>
           <p>
@@ -195,13 +227,13 @@
           <p>-responsive pentru home page   </p>
           <p>-Scholarly HTML  </p>
           <p>-design+html+css nivel3 page</p>
+          <p>-creare + stilizare imagini (Lider)   </p>
           <p>-cautare imagine+html +css pentru design 'absolvire' page </p>
 
           <h4>Lupu Teodor-Vladut</h4>
           <p>-cautare imagine pentru design nivel2 page  </p>
           <p>-html+css pentru nivel2 page  </p>
           <p>-responsive pentru nivel2 page  </p>
-          <p>-Scholarly HTML  </p>
           <p>-creare + stilizare imagini (student, invadator, bomba)   </p>
           <p>-creare logo 'FII Invaders'</p>
 
@@ -212,11 +244,10 @@
           <p>-design nivel1 page    </p>
           <p>-Scholarly HTML  </p>
           <p>-JavaScript  </p>
-          <p>-cautare imagine+html +css pentru design 'fail' page</p>
           </section>
 
           <section id="concluzii">
-          <h3>Conclutie</h3>
+          <h3>Concluzie</h3>
 
           <p>
             Fii Invaders este un joc aflat in continua desfasurare , menit sa destinda studentii stresati de mediul academic.

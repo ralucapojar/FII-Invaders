@@ -1,9 +1,6 @@
   var monsterTouch = 0 ;
     var score;
     var name;
-    
-    //--------------------------Vlad
-    
     var again = document.getElementsByClassName("btn-again")[0];
     var next = document.getElementsByClassName("btn-next")[0];
     
@@ -566,7 +563,7 @@ function printScore(){
 }
 
 function printLife(){  
-    var text = " Life: " + player.getLife() + " *"; 
+    var text = " Life &#10084; : " + player.getLife(); 
     document.getElementById("noLife").innerHTML = text;                        
 }
 
