@@ -141,25 +141,54 @@ body {
 
 .btn-player{
   text-decoration:none;
+  position: absolute;
   height: 50px;
   width: 150px;
-  margin: 0px;
+  margin-left : 80%;
+  margin-top : 7%;
   color: darkred;
   font-weight: bold;
   text-align: -webkit-center;
   background-color: lightgoldenrodyellow;
+  border-style: ridge;
+  border-color: red;
+  border-radius: 20%;
 }
-.btn-again, .btn-next{
+
+.btn-again{
   text-decoration:none;
+  position: absolute;
   display: none;
-  height: 50px;
-  width: 150px;
-  margin: 0px;
-  color: darkred;
+  height: 80px;
+  width: 200px;
+  margin-left : 10%;
+  margin-top : 20%;
+  color: lightgoldenrodyellow;
   font-weight: bold;
   text-align: -webkit-center;
-  background-color: lightgoldenrodyellow;
+  background-color: darkred;
+  border-style: ridge;
+  border-color: red;
+  border-radius: 50%;
+}
+
+.btn-next{
+  text-decoration:none;
+  position: absolute;
+  display: none;
+  height: 80px;
+  width: 200px;
+  margin-left : 80%;
+  margin-top : 20%;
+  color: lightgoldenrodyellow;
+  font-weight: bold;
+  text-align: -webkit-center;
+  background-color: darkred;
+  border-style: ridge;
+  border-color: red;
+  border-radius: 50%;
 }
 
 .btn-again a, .btn-next a, .btn-player a{
-text-decoration: none;}
+text-decoration: none;
+}

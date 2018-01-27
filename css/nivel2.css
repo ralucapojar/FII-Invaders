@@ -168,14 +168,57 @@ body {
     font-weight: bold;
 }
 
-.btn-again, .btn-next, .btn-player{
+
+.btn-player{
   text-decoration:none;
-  display: none;
+  position: absolute;
   height: 50px;
   width: 150px;
-  margin: 0px;
-  color: darkred;
+  margin-left : 80%;
+  margin-top : 7%;
+  color: lightgoldenrodyellow;
   font-weight: bold;
   text-align: -webkit-center;
-  background-color: lightgoldenrodyellow;
+  background-color:  #687f91;
+  border-style: ridge;
+  border-color: #00008B;
+  border-radius: 20%;
+}
+
+.btn-again{
+  text-decoration:none;
+  position: absolute;
+  display: none;
+  height: 80px;
+  width: 200px;
+  margin-left : 10%;
+  margin-top : 20%;
+  color: lightgoldenrodyellow;
+  font-weight: bold;
+  text-align: -webkit-center;
+  background-color:  #687f91;
+  border-style: ridge;
+  border-color: #00008B;
+  border-radius: 50%;
+}
+
+.btn-next{
+  text-decoration:none;
+  position: absolute;
+  display: none;
+  height: 80px;
+  width: 200px;
+  margin-left : 80%;
+  margin-top : 20%;
+  color: lightgoldenrodyellow;
+  font-weight: bold;
+  text-align: -webkit-center;
+  background-color:  #687f91;
+  border-style: ridge;
+  border-color: #00008B;
+  border-radius: 50%;
+}
+
+.btn-again a, .btn-next a, .btn-player a{
+  text-decoration: none;
 }
