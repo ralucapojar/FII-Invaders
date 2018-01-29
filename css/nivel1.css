@@ -202,15 +202,15 @@ text-decoration: none;
 }
 #score{
   margin-left: 110%;
-  margin-top: 8%;
+  margin-top: 6%;
 }
 #noLife{
   margin-left: 35%;
-  margin-top: 8%;
+  margin-top: 6%;
 }
 #monsterLife{
   margin-left: 170%;
-  margin-top: 0%;
+  margin-top: -2%;
 }
 
 }
@@ -218,30 +218,30 @@ text-decoration: none;
 @media (min-width:400px ) {
 .btn-player{
   margin-left : 90%;
-  margin-top : 165%;
+  margin-top : 150%;
 }
 .btn-again{
   margin-left : 30%;
-  margin-top : 160%;
+  margin-top : 145%;
 }
 .btn-next{
   margin-left : 140%;
-  margin-top : 160%;
+  margin-top : 145%;
 }
 #canvas{
   margin-top: 0%;
 }
 #score{
   margin-left: 80%;
-  margin-top: 8%;
+  margin-top: 2%;
 }
 #noLife{
   margin-left: 25%;
-  margin-top: 8%;
+  margin-top: 2%;
 }
 #monsterLife{
   margin-left: 130%;
-  margin-top: 2%;
+  margin-top: -0.5%;
 }
 
 }
@@ -272,7 +272,7 @@ text-decoration: none;
 }
 #monsterLife{
   margin-left: 110%;
-  margin-top: 0%;
+  margin-top: -1%;
 }
 
 }
@@ -295,15 +295,15 @@ text-decoration: none;
 }
 #noLife{
   margin-left: 25%;
-  margin-top: 4%;
+  margin-top: 2%;
 }
 #score{
   margin-left: 70%;
-  margin-top: 4%;
+  margin-top: 2%;
 }
 #monsterLife{
   margin-left: 110%;
-  margin-top: 0%;
+  margin-top: -1%;
 }
 }
 
@@ -325,15 +325,15 @@ text-decoration: none;
 }
 #noLife{
   margin-left: 25%;
-  margin-top: 4%;
+  margin-top: 2%;
 }
 #score{
   margin-left: 60%;
-  margin-top: 4%;
+  margin-top: 2%;
 }
 #monsterLife{
   margin-left: 90%;
-  margin-top: 0%;
+  margin-top: -1%;
 }
 }
 @media (min-width:800px ) {
@@ -354,15 +354,15 @@ text-decoration: none;
 }
 #noLife{
   margin-left: 25%;
-  margin-top: 4%;
+  margin-top: 2%;
 }
 #score{
   margin-left: 60%;
-  margin-top: 4%;
+  margin-top: 2%;
 }
 #monsterLife{
   margin-left: 90%;
-  margin-top: 0%;
+  margin-top: -1%;
 }
 }
 
@@ -384,15 +384,15 @@ text-decoration: none;
 }
 #noLife{
   margin-left: 25%;
-  margin-top: 4%;
+  margin-top: 2%;
 }
 #score{
   margin-left: 50%;
-  margin-top: 4%;
+  margin-top: 2%;
 }
 #monsterLife{
   margin-left: 75%;
-  margin-top: 2%;
+  margin-top: -1%;
 }
 }
 @media (min-width:1000px ) {
@@ -413,15 +413,15 @@ text-decoration: none;
 }
 #noLife{
   margin-left: 25%;
-  margin-top: 4%;
+  margin-top: 2%;
 }
 #score{
   margin-left: 50%;
-  margin-top: 4%;
+  margin-top: 2%;
 }
 #monsterLife{
   margin-left: 75%;
-  margin-top: 2%;
+  margin-top: -1%;
 }
 }
 
@@ -440,15 +440,15 @@ text-decoration: none;
 }
 #noLife{
   margin-left: 25%;
-  margin-top: 4%;
+  margin-top: 2%;
 }
 #score{
   margin-left: 50%;
-  margin-top: 4%;
+  margin-top: 2%;
 }
 #monsterLife{
   margin-left: 75%;
-  margin-top: 2%;
+  margin-top: -1%;
 }
 }
 
@@ -468,6 +468,18 @@ text-decoration: none;
   margin-left : 65%;
   margin-top : 54%;
 }
+#noLife{
+  margin-left: 25%;
+  margin-top: 1%;
+}
+#score{
+  margin-left: 50%;
+  margin-top: 1%;
+}
+#monsterLife{
+  margin-left: 75%;
+  margin-top: -1%;
+}
 }
 
 @media (min-width:1300px ) {
@@ -482,6 +494,18 @@ text-decoration: none;
 .btn-next{
   margin-left : 65%;
   margin-top : 50%;
+}
+#noLife{
+  margin-left: 25%;
+  margin-top: 1%;
+}
+#score{
+  margin-left: 50%;
+  margin-top: 1%;
+}
+#monsterLife{
+  margin-left: 75%;
+  margin-top: -1%;
 }
 }
 
@@ -498,7 +522,20 @@ text-decoration: none;
   margin-left : 65%;
   margin-top : 46%;
 }
+#noLife{
+  margin-left: 25%;
+  margin-top: 1%;
 }
+#score{
+  margin-left: 50%;
+  margin-top: 1%;
+}
+#monsterLife{
+  margin-left: 75%;
+  margin-top: -1%;
+}
+}
+
 @media (min-width:1500px ) {
 .btn-player{
   margin-left : 80%;
@@ -516,6 +553,7 @@ text-decoration: none;
   top: 25%;
   left: 32%;
 }
+
 }
 
 @media (min-width:1800px ) {
