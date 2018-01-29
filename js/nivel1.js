@@ -517,14 +517,17 @@
         var keyCode = e.keyCode;
   
         if (keyCode == 37) {
+            console.log(keyCode + "left");
             player.moveLeft();
             
         }       
         if (keyCode == 39) {
+            console.log(keyCode = "right");
             player.moveRight();
             
         }
         if (keyCode == 32) {
+            console.log(keyCode + "up");
             
             if(contor % 4 === 0)
             {
@@ -573,7 +576,7 @@ function printHighScore(){
             var text = "" + index  + ". " + sortable[player][0] + " : " + sortable[player][1];        
             var textnode = document.createTextNode(text);         
             h1.appendChild(textnode);                         
-            document.getElementById("high").appendChild(h1);  
+            document.getElementById("highScores").appendChild(h1);  
             index++;
         }
      }

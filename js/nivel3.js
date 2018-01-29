@@ -599,7 +599,7 @@ function printHighScore(){
             var text = "" + index  + ". " + sortable[player][0] + " : " + sortable[player][1];        
             var textnode = document.createTextNode(text);         
             h1.appendChild(textnode);                         
-            document.getElementById("high").appendChild(h1);  
+            document.getElementById("highScores").appendChild(h1);  
             index++;
         }
 }
