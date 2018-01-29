@@ -602,8 +602,8 @@ function printHighScore(){
             document.getElementById("highScores").appendChild(h1);  
             index++;
         }
+    }
 }
-
 
 function scoreMonster(){
     score = parseInt(localStorage.getItem(name));

@@ -626,6 +626,7 @@ function printHighScore(){
             index++;
         }
  }
+}
 
 function hideMonsterLife(){
     var img = document.getElementById("monsterLife");
