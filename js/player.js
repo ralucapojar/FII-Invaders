@@ -1,4 +1,5 @@
 var Player;
+var name2 = name;
 
 (function(){
 

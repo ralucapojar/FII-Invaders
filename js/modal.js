@@ -1,3 +1,8 @@
+ var jucator;
+var url_string = window.location.href;
+var url = new URL(url_string);
+
+
 function openLeftMenu() {
     document.getElementById("leftMenu").style.height = "30%";
     document.getElementById("leftMenu").style.display = "block";

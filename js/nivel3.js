@@ -17,8 +17,6 @@
 
     var monsterTouch = 0 ;
     var score;
-    var name;
-
     //--------------------------Vlad
     
     var again = document.getElementsByClassName("btn-again")[0];
@@ -114,11 +112,11 @@
         context.drawImage(imageCache['student1'], player.getPoz(), 655, 100, 100);
         var url_string= window.location.href;
         var url = new URL(url_string);
-        name = url.searchParams.get("name");
-        if (localStorage.getItem(name) === null) {
-            localStorage.setItem(name, 0);
+        //name = url.searchParams.get("name");
+        if (localStorage.getItem(name2) === null) {
+            localStorage.setItem(name2, 0);
         } else {
-            score = parseInt(localStorage.getItem(name));
+            score = parseInt(localStorage.getItem(name2));
         }       
 
         createInvaders();
@@ -564,22 +562,28 @@
 
     };
 
+
     function keyDownTextField(e) {
+        console.log(e);
         var keyCode = e.keyCode;
   
-        if (keyCode == 37) {
+        //if (keyCode == 37) {
+            if (keyCode == 100 || keyCode == 37) {
+            console.log("left");
             player.moveLeft();
             
         }       
-        if (keyCode == 39) {
+        //if (keyCode == 39) {
+        if (keyCode == 102  || keyCode == 39) {
+            console.log("right");
             player.moveRight();
             
         }
-        if (keyCode == 32) {
-            
+        //if (keyCode == 32) {
+            if (keyCode == 104  || keyCode == 32) {
             if(contor % 2 === 0)
             {
-
+            console.log("up");
              var newBullet = {
                     xBullet:player.getPoz() + 5,
                     yBullet:645,
@@ -606,13 +610,13 @@ function printHighScore(){
 }
 
 function scoreMonster(){
-    score = parseInt(localStorage.getItem(name));
+    score = parseInt(localStorage.getItem(name2));
     score += 600;
-    localStorage.setItem(name, score);
+    localStorage.setItem(name2, score);
 }
 
 function getScore(){
-    score = parseInt(localStorage.getItem(name));
+    score = parseInt(localStorage.getItem(name2));
     if (invaders.length > 0 && invaders.length < 6 ){
         score += 40;
     }
@@ -626,7 +630,7 @@ function getScore(){
         score += 100;
     }
 
-    localStorage.setItem(name, score);
+    localStorage.setItem(name2, score);
 }
 
 function hideMonsterLife(){
@@ -641,7 +645,7 @@ function printMonsterLife(path){
 }
 
 function printScore(){ 
-    score = parseInt(localStorage.getItem(name)); 
+    score = parseInt(localStorage.getItem(name2)); 
     var text = " Score: " + score;         
     document.getElementById("score").innerHTML = text;                       
 }
